@@ -1,0 +1,134 @@
+@import "../../styles/variables";
+
+.appBar {
+  display: flex;
+
+  &__toggleBtn {
+    display: none;
+
+    @media (max-width: $width-s) {
+      display: inline-block;
+    }
+  }
+
+  &__closeBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: 20px;
+
+    img {
+      margin-right: 15px;
+    }
+
+    h1 {
+      color: #181818;
+      font-size: 24px;
+      letter-spacing: 1%;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    p {
+      color: $color-muted;
+    }
+  }
+
+  &__items {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    transform: translateY(-100vh);
+
+
+    &__left {
+      display: flex;
+      align-items: center;
+    }
+
+    &__right {
+      display: flex;
+      align-items: center;
+    }
+
+    @media (max-width: $width-s) {
+      visibility: hidden;
+      z-index: 2;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-primary;
+      transition: 1s;
+      transform: translateY(-100vh);
+    }
+  }
+
+  &_opened {
+    @media (max-width: $width-s) {
+      visibility: visible;
+      transform: none;
+    }
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    @media (max-width: $width-s) {
+      margin-top: 10px;
+    }
+  }
+
+  &__cartBtn {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    line-height: 23px;
+    padding: 12px 25px;
+    background-color: $color-primary;
+
+    & svg {
+      margin-right: 8px;
+      margin-bottom: 1px;
+    }
+
+    & span {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    &__delimiter {
+      width: 1px;
+      height: 25px;
+      background-color: rgba(255, 255, 255, 0.25);
+      margin-left: 14px;
+      margin-right: 14px;
+    }
+  }
+
+  @media (max-width: $width-s) {
+    display: block;
+  }
+
+}

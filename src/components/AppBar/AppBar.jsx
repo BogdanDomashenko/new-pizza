@@ -1,103 +1,120 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useRole } from "../../hooks";
 import { logout } from "../../redux/actions/user";
 import { ROLES } from "../../utils/constants";
-import { Button, CartIcon } from "../ui";
+import { Button, CartIcon, IconButton } from "../ui";
 import logo from "../../assets/img/pizza-logo.svg";
-import styles from "./AppBar.module.css";
+import styles from "./AppBar.module.scss";
+import classNames from "classnames";
 
 const AppBar = () => {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-	const userRole = useRole();
-	const { totalPrice, totalCount } = useSelector((state) => state.cart);
+  const [navBarOpened, setNavBarOpened] = useState(false);
 
-	const onLogoutClick = () => {
-		dispatch(logout());
-	};
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userRole = useRole();
+  const { totalPrice, totalCount } = useSelector((state) => state.cart);
 
-	const onAdminClick = () => {
-		navigate("/admin/orders");
-	};
+  const onLogoutClick = () => {
+    dispatch(logout());
+  };
 
-	const onSignInClick = () => {
-		navigate("/auth/sign-in");
-	};
+  const onAdminClick = () => {
+    navigate("/admin/orders");
+  };
 
-	const onProfileClick = () => {
-		navigate("/profile");
-	};
+  const onSignInClick = () => {
+    navigate("/auth/sign-in");
+  };
 
-	return (
-		<div className={styles.appBar}>
-			<Link to="/">
-				<div className="header__logo">
-					<img width="38" src={logo} alt="Pizza logo" />
-					<div>
-						<h1>Pizza</h1>
-						<p>the most delicious pizza in the universe</p>
-					</div>
-				</div>
-			</Link>
-			<div className="header__cart">
-				{userRole !== ROLES.phantom ? (
-					<div className="header__button">
-						<Button
-							className="button--default button--light"
-							onClick={onProfileClick}
-						>
-							<span>Profile</span>
-						</Button>
-					</div>
-				) : (
-					""
-				)}
-				{userRole === ROLES.admin ? (
-					<div className="header__button">
-						<Button
-							className="button--default button--light"
-							onClick={onAdminClick}
-						>
-							<span>Admin</span>
-						</Button>
-					</div>
-				) : (
-					""
-				)}
-				{userRole !== ROLES.phantom ? (
-					<div className="header__button">
-						<Button
-							className="button--default button--light"
-							onClick={onLogoutClick}
-						>
-							<span>Logout</span>
-						</Button>
-					</div>
-				) : (
-					<div className="header__button">
-						<Button
-							className="button--default button--light"
-							onClick={onSignInClick}
-						>
-							<span>Sign in</span>
-						</Button>
-					</div>
-				)}
-				<div className="header__button header__button--cart">
-					<Link to="/cart">
-						<Button className="button--cart button--orange">
-							<span>{totalPrice} $</span>
-							<div className="button__delimiter"></div>
-							<CartIcon />
-							<span>{totalCount}</span>
-						</Button>
-					</Link>
-				</div>
-			</div>
-		</div>
-	);
+  const onProfileClick = () => {
+    navigate("/profile");
+  };
+
+  const toggleNavbar = () => {
+    setNavBarOpened(!navBarOpened);
+  };
+
+  return (
+    <div className={styles.appBar}>
+      <IconButton
+        onClick={toggleNavbar}
+        className={styles.appBar__toggleBtn}
+        iconName="icon-burger-menu"
+      />
+      <Link to="/" className={styles.appBar__logo}>
+        <img width="38" src={logo} alt="Pizza logo" />
+        <div>
+          <h1>Pizza</h1>
+          <p>the most delicious pizza in the universe</p>
+        </div>
+      </Link>
+      <nav
+        className={classNames(styles.appBar__items, {
+          [styles.appBar_opened]: navBarOpened,
+        })}
+      >
+        <div className={styles.appBar__items__left}>
+          <div className={styles.appBar__item}>
+            <Button className="button--light">Menu</Button>
+          </div>
+          <div className={styles.appBar__item}>
+            <Button className="button--light">Special offers</Button>
+          </div>
+        </div>
+        <div className={styles.appBar__items__right}>
+          <div className={styles.appBar__item}>
+            <a href="tel:+380992223311" className="bold-text">
+              +38 (099) 222 33 11
+            </a>
+          </div>
+          {userRole !== ROLES.phantom ? (
+            <div className={styles.appBar__item}>
+              <Button className="button--light" onClick={onProfileClick}>
+                Profile
+              </Button>
+            </div>
+          ) : (
+            ""
+          )}
+          {userRole !== ROLES.phantom ? (
+            <div className={styles.appBar__item}>
+              <Button className="button--light" onClick={onLogoutClick}>
+                Logout
+              </Button>
+            </div>
+          ) : (
+            <div className={styles.appBar__item}>
+              <Button className="button--light" onClick={onSignInClick}>
+                Sign in
+              </Button>
+            </div>
+          )}
+          <div className={styles.appBar__item}>
+            <Link to="/cart">
+              <Button className={styles.appBar__cartBtn}>
+                <span>{totalPrice} $</span>
+                <div className={styles.appBar__cartBtn__delimiter}></div>
+                <CartIcon />
+                <span>{totalCount}</span>
+              </Button>
+            </Link>
+          </div>
+        </div>
+        {navBarOpened ? (
+          <IconButton
+            onClick={toggleNavbar}
+            className={styles.appBar__closeBtn}
+            iconName="icon-burger-remove"
+          />
+        ) : (
+          ""
+        )}
+      </nav>
+    </div>
+  );
 };
 
 export default AppBar;

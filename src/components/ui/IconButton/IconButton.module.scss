@@ -1,0 +1,15 @@
+@import "../../../styles/variables";
+
+.iconButton {
+  background-color: transparent;
+  border: 0;
+  font-size: 30px;
+
+  span:hover, span:active {
+    color: $color-muted;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

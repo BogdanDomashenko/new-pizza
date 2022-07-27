@@ -13,7 +13,7 @@ const Button = ({
 		<button
 			style={style}
 			type={type}
-			className={classNames("button button--default ", className, {
+			className={classNames(className, " button button--default", {
 				"button-outline": outline,
 			})}
 			onClick={onClick}
