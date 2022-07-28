@@ -3,9 +3,27 @@
 
 .appBar {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__first {
+    display: flex;
+
+    @include screens-m {
+      width: 55%;
+    }
+    @include screens-s {
+      width: 100%;
+    }
+  }
 
   &__toggleBtn {
     display: none;
+    margin-right: 10px;
+
+    &__icon {
+      font-size: 40px;
+    }
 
     @include screens-m {
       display: inline-block;
@@ -15,7 +33,7 @@
   &__closeBtn {
     display: none;
     position: absolute;
-    top: 86px;
+    top: 46px;
     left: 30px;
     transform: -100vh;
 
@@ -48,6 +66,10 @@
 
     p {
       color: $color-muted;
+
+      @include screens-s {
+        font-size: 12px;
+      }
     }
   }
 
@@ -109,9 +131,6 @@
       margin-right: 10px;
     }
 
-    @include screens-m {
-      margin-top: 10px;
-    }
   }
 
   &__phoneNumber {
@@ -134,61 +153,25 @@
     }
   }
 
+  &__mobileHeaderItems {
+    display: none;
+
+    &__phoneNumber {
+      @include screens-s {
+        display: none;
+      }
+    }
+
+    @include screens-m {
+      display: flex;
+      align-items: center;
+    }
+  }
+
   &__btn {
     @include screens-m {
       background: none !important;
       color: $color-light !important;
-    }
-  }
-
-  &__cartBtn {
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    line-height: 23px;
-    padding: 12px 25px;
-    background-color: $color-primary;
-    border: 2px solid !important;
-
-    & svg {
-      margin-right: 8px;
-      margin-bottom: 1px;
-    }
-
-    & span {
-      font-weight: 600;
-      font-size: 16px;
-    }
-
-    &__price {
-      @include screens-l {
-        display: none;
-      }
-    }
-
-    &__delimiter {
-      width: 1px;
-      height: 25px;
-      background-color: rgba(255, 255, 255, 0.25);
-      margin-left: 14px;
-      margin-right: 14px;
-
-      @include screens-l {
-        display: none;
-      }
-    }
-
-    @include screens-m {
-      margin: 20px 0;
-      &:hover, &:active {
-        background: rgba($color-light, .2) !important;
-      }
-    }
-    @include screens-l {
-      justify-content: center;
     }
   }
 }

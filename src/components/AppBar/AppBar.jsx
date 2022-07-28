@@ -4,10 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRole } from "../../hooks";
 import { logout } from "../../redux/actions/user";
 import { ROLES } from "../../utils/constants";
-import { Button, CartIcon, IconButton } from "../ui";
+import { Button, IconButton } from "../ui";
 import logo from "../../assets/img/pizza-logo.svg";
 import styles from "./AppBar.module.scss";
 import classNames from "classnames";
+import CartButton from "./CartButton/CartButton";
 
 const AppBar = () => {
   const [navBarOpened, setNavBarOpened] = useState(false);
@@ -47,18 +48,21 @@ const AppBar = () => {
 
   return (
     <div className={styles.appBar}>
-      <IconButton
-        onClick={toggleNavbar}
-        className={styles.appBar__toggleBtn}
-        iconName="icon-burger-menu"
-      />
-      <Link to="/" className={styles.appBar__logo}>
-        <img width="38" src={logo} alt="Pizza logo" />
-        <div>
-          <h1>Pizza</h1>
-          <p>the most delicious pizza in the universe</p>
-        </div>
-      </Link>
+      <div className={styles.appBar__first}>
+        <IconButton
+          onClick={toggleNavbar}
+          iconClassName={styles.appBar__toggleBtn__icon}
+          className={styles.appBar__toggleBtn}
+          iconName="icon-burger-menu"
+        />
+        <Link to="/" className={styles.appBar__logo}>
+          <img width="38" src={logo} alt="Pizza logo" />
+          <div>
+            <h1>Pizza</h1>
+            <p>the most delicious pizza in the universe</p>
+          </div>
+        </Link>
+      </div>
       <nav
         className={classNames(styles.appBar__items, {
           [styles.appBar_opened]: navBarOpened,
@@ -117,23 +121,38 @@ const AppBar = () => {
             </div>
           )}
           <div className={styles.appBar__item}>
-            <Button className={styles.appBar__cartBtn} onClick={onCartClick}>
-              <span className={styles.appBar__cartBtn__price}>
-                {totalPrice} $
-              </span>
-              <div className={styles.appBar__cartBtn__delimiter}></div>
-              <CartIcon />
-              <span>{totalCount}</span>
-            </Button>
+            <CartButton
+              totalPrice={totalPrice}
+              totalCount={totalCount}
+              onClick={onCartClick}
+            />
           </div>
         </div>
         <IconButton
           onClick={toggleNavbar}
           className={styles.appBar__closeBtn}
-          iconStyles={styles.appBar__closeBtn__icon}
+          iconClassName={styles.appBar__closeBtn__icon}
           iconName="icon-remove"
         />
       </nav>
+      <div className={styles.appBar__mobileHeaderItems}>
+        <div className={styles.appBar__item}>
+          <a
+            href="tel:+380992223311"
+            className={classNames(
+              "text-bold",
+              styles.appBar__mobileHeaderItems__phoneNumber
+            )}
+          >
+            +38 (099) 222 33 11
+          </a>
+        </div>
+        <CartButton
+          totalPrice={totalPrice}
+          totalCount={totalCount}
+          onClick={onCartClick}
+        />
+      </div>
     </div>
   );
 };
