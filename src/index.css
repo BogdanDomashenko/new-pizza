@@ -171,7 +171,6 @@ a {
     background-color: #fe5f1e;
     border-radius: 30px;
     padding: 10px 20px;
-    min-width: 100px;
     text-align: center;
     cursor: pointer;
     -webkit-transition: background-color 0.15s ease-in-out,

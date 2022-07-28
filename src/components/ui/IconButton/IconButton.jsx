@@ -2,13 +2,13 @@ import React from "react";
 import classNames from "classnames";
 import styles from "./IconButton.module.scss";
 
-const IconButton = ({ className, onClick, iconName }) => {
+const IconButton = ({ className, iconStyles, onClick, iconName }) => {
   return (
     <button
-      className={classNames(className, styles.burgerButton)}
+      className={classNames(className, styles.iconButton)}
       onClick={onClick}
     >
-      <span className={iconName}></span>
+      <span className={classNames(iconStyles, iconName)}></span>
     </button>
   );
 };

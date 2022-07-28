@@ -1,4 +1,5 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .appBar {
   display: flex;
@@ -6,15 +7,25 @@
   &__toggleBtn {
     display: none;
 
-    @media (max-width: $width-s) {
+    @include screens-m {
       display: inline-block;
     }
   }
 
   &__closeBtn {
+    display: none;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 86px;
+    left: 30px;
+    transform: -100vh;
+
+    &__icon {
+      color: $color-light;
+    }
+
+    @include screens-m {
+      display: inline-block;
+    }
   }
 
   &__logo {
@@ -51,20 +62,25 @@
     -ms-flex-pack: justify;
     justify-content: space-between;
     width: 100%;
-    transform: translateY(-100vh);
 
 
     &__left {
       display: flex;
       align-items: center;
+      @include screens-m {
+        flex-direction: column;
+      }
     }
 
     &__right {
       display: flex;
       align-items: center;
+      @include screens-m {
+        flex-direction: column;
+      }
     }
 
-    @media (max-width: $width-s) {
+    @include screens-m {
       visibility: hidden;
       z-index: 2;
       position: fixed;
@@ -74,14 +90,15 @@
       width: 100%;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
       background-color: $color-primary;
-      transition: 1s;
+      transition: .5s ease-in;
       transform: translateY(-100vh);
     }
   }
 
   &_opened {
-    @media (max-width: $width-s) {
+    @include screens-m {
       visibility: visible;
       transform: none;
     }
@@ -92,8 +109,35 @@
       margin-right: 10px;
     }
 
-    @media (max-width: $width-s) {
+    @include screens-m {
       margin-top: 10px;
+    }
+  }
+
+  &__phoneNumber {
+    a {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 24px;
+
+      @include screens-m {
+        color: $color-light;
+      }
+    }
+
+    @media (max-width: 1272px) {
+      display: none;
+    }
+    @include screens-m {
+      order: 1;
+      display: inline-block;
+    }
+  }
+
+  &__btn {
+    @include screens-m {
+      background: none !important;
+      color: $color-light !important;
     }
   }
 
@@ -107,6 +151,7 @@
     line-height: 23px;
     padding: 12px 25px;
     background-color: $color-primary;
+    border: 2px solid !important;
 
     & svg {
       margin-right: 8px;
@@ -118,17 +163,32 @@
       font-size: 16px;
     }
 
+    &__price {
+      @include screens-l {
+        display: none;
+      }
+    }
+
     &__delimiter {
       width: 1px;
       height: 25px;
       background-color: rgba(255, 255, 255, 0.25);
       margin-left: 14px;
       margin-right: 14px;
+
+      @include screens-l {
+        display: none;
+      }
+    }
+
+    @include screens-m {
+      margin: 20px 0;
+      &:hover, &:active {
+        background: rgba($color-light, .2) !important;
+      }
+    }
+    @include screens-l {
+      justify-content: center;
     }
   }
-
-  @media (max-width: $width-s) {
-    display: block;
-  }
-
 }

@@ -17,24 +17,32 @@ const AppBar = () => {
   const userRole = useRole();
   const { totalPrice, totalCount } = useSelector((state) => state.cart);
 
+  const toggleNavbar = () => {
+    setNavBarOpened(!navBarOpened);
+  };
+
   const onLogoutClick = () => {
     dispatch(logout());
   };
 
   const onAdminClick = () => {
     navigate("/admin/orders");
+    toggleNavbar();
   };
 
   const onSignInClick = () => {
     navigate("/auth/sign-in");
+    toggleNavbar();
   };
 
   const onProfileClick = () => {
     navigate("/profile");
+    toggleNavbar();
   };
 
-  const toggleNavbar = () => {
-    setNavBarOpened(!navBarOpened);
+  const onCartClick = () => {
+    navigate("/cart");
+    toggleNavbar();
   };
 
   return (
@@ -58,21 +66,31 @@ const AppBar = () => {
       >
         <div className={styles.appBar__items__left}>
           <div className={styles.appBar__item}>
-            <Button className="button--light">Menu</Button>
+            <Button className={classNames(styles.appBar__btn, "button--light")}>
+              Menu
+            </Button>
           </div>
           <div className={styles.appBar__item}>
-            <Button className="button--light">Special offers</Button>
+            <Button className={classNames(styles.appBar__btn, "button--light")}>
+              Special offers
+            </Button>
           </div>
         </div>
         <div className={styles.appBar__items__right}>
-          <div className={styles.appBar__item}>
-            <a href="tel:+380992223311" className="bold-text">
-              +38 (099) 222 33 11
-            </a>
+          <div
+            className={classNames(
+              styles.appBar__item,
+              styles.appBar__phoneNumber
+            )}
+          >
+            <a href="tel:+380992223311">+38 (099) 222 33 11</a>
           </div>
           {userRole !== ROLES.phantom ? (
             <div className={styles.appBar__item}>
-              <Button className="button--light" onClick={onProfileClick}>
+              <Button
+                className={classNames(styles.appBar__btn, "button--light")}
+                onClick={onProfileClick}
+              >
                 Profile
               </Button>
             </div>
@@ -81,37 +99,40 @@ const AppBar = () => {
           )}
           {userRole !== ROLES.phantom ? (
             <div className={styles.appBar__item}>
-              <Button className="button--light" onClick={onLogoutClick}>
+              <Button
+                className={classNames(styles.appBar__btn, "button--light")}
+                onClick={onLogoutClick}
+              >
                 Logout
               </Button>
             </div>
           ) : (
             <div className={styles.appBar__item}>
-              <Button className="button--light" onClick={onSignInClick}>
+              <Button
+                className={classNames(styles.appBar__btn, "button--light")}
+                onClick={onSignInClick}
+              >
                 Sign in
               </Button>
             </div>
           )}
           <div className={styles.appBar__item}>
-            <Link to="/cart">
-              <Button className={styles.appBar__cartBtn}>
-                <span>{totalPrice} $</span>
-                <div className={styles.appBar__cartBtn__delimiter}></div>
-                <CartIcon />
-                <span>{totalCount}</span>
-              </Button>
-            </Link>
+            <Button className={styles.appBar__cartBtn} onClick={onCartClick}>
+              <span className={styles.appBar__cartBtn__price}>
+                {totalPrice} $
+              </span>
+              <div className={styles.appBar__cartBtn__delimiter}></div>
+              <CartIcon />
+              <span>{totalCount}</span>
+            </Button>
           </div>
         </div>
-        {navBarOpened ? (
-          <IconButton
-            onClick={toggleNavbar}
-            className={styles.appBar__closeBtn}
-            iconName="icon-burger-remove"
-          />
-        ) : (
-          ""
-        )}
+        <IconButton
+          onClick={toggleNavbar}
+          className={styles.appBar__closeBtn}
+          iconStyles={styles.appBar__closeBtn__icon}
+          iconName="icon-remove"
+        />
       </nav>
     </div>
   );
