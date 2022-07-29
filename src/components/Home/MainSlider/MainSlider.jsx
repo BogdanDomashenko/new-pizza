@@ -9,6 +9,12 @@ const MainSlider = () => {
       <SwiperSlide>
         <Banner1 />
       </SwiperSlide>
+      <SwiperSlide>
+        <Banner1 />
+      </SwiperSlide>
+      <SwiperSlide>
+        <Banner1 />
+      </SwiperSlide>
     </Slider>
   );
 };

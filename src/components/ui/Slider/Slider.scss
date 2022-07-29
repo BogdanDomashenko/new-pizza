@@ -1,4 +1,5 @@
 @import "../../../styles/variables";
+@import "../../../styles/mixins";
 
 .swiper {
   width: 100%;
@@ -8,7 +9,8 @@
 
   .swiper-button-prev, .swiper-button-next {
     background: rgba(255, 255, 255, 0.3);
-    padding: 28px;
+    height: 50px;
+    width: 50px;
     border-radius: 50px;
     transition: .1s ease-in;
 
@@ -20,14 +22,35 @@
     &:hover, &:active {
       background: rgba(255, 255, 255, 0.7);
     }
+
+    @include screens-m {
+      display: none;
+    }
   }
 
-  .swiper-button-prev {
-    left: -20px;
+
+  .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 30px;
+    text-align: start;
+    left: 80px;
+
+    @include screens-xs {
+      left: 40px;
+    }
   }
 
-  .swiper-button-next {
-    right: -20px;
+
+  .swiper-pagination-bullet {
+    border-radius: 0;
+    width: 20px;
+    height: 3px;
+    background-color: $color-light;
+    opacity: 1;
+    border: 0;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: $color-success;
   }
 }
 

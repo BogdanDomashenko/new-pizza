@@ -16,17 +16,29 @@ const Banner1 = () => {
             <span className="text-success text-uppercase"> inspiration</span>
           </span>
         </h1>
-        <p>
+        <p className={styles.text}>
           PIZZA wanted to create a pizza with heat for "a new wave of pizza
           lovers"
         </p>
-        <Button className={styles.button}>Order Now</Button>
+        <div>
+          <Button className={styles.button}>Order Now</Button>
+        </div>
 
         <div className={styles.icons}>
           <IconBlock
             color="white"
             iconName="icon-customers"
             textPosition="right"
+            title="2100+"
+            text="Customers"
+            iconSize="25px"
+          />
+          <IconBlock
+            color="white"
+            iconName="icon-delivery"
+            textPosition="right"
+            title="1700+"
+            text="Delivery"
           />
         </div>
       </div>

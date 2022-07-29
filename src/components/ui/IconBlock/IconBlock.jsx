@@ -9,7 +9,14 @@ const TEXT_POSITION = {
   down: "down",
 };
 
-const IconBlock = ({ iconName, color, textPosition }) => {
+const IconBlock = ({
+  iconName,
+  color,
+  textPosition,
+  title,
+  text,
+  iconSize,
+}) => {
   return (
     <div
       className={classNames(styles.iconBlock, {
@@ -17,10 +24,15 @@ const IconBlock = ({ iconName, color, textPosition }) => {
         [styles.iconBlock_textDown]: textPosition === TEXT_POSITION.down,
       })}
     >
-      <Icon name={iconName} color={color} className={styles.icon} />
+      <Icon
+        name={iconName}
+        color={color}
+        className={styles.icon}
+        size={iconSize}
+      />
       <div className={styles.iconText}>
-        <h2 style={{ color }}>2100+</h2>
-        <span style={{ color }}>Customers</span>
+        <h2 style={{ color }}>{title}</h2>
+        <span style={{ color }}>{text}</span>
       </div>
     </div>
   );
