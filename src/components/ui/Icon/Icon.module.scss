@@ -1,0 +1,12 @@
+@import "../../../styles/variables";
+
+.icon {
+  display: inline-flex;
+  font-size: 25px;
+  border: 1px solid $color-light;
+  border-radius: 10px;
+
+  span {
+    margin: 15px;
+  }
+}

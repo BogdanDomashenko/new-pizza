@@ -10,8 +10,8 @@ export { default as CartItem } from "./Cart/CartItem";
 export { default as ClearCart } from "./Cart/ClearCart";
 export { default as LoginForm } from "./Forms/LoginForm";
 export {
-	default as SignInForm,
-	default as SignUpForm,
+  default as SignInForm,
+  default as SignUpForm,
 } from "./Forms/SignUpForm";
 export { default as Modals } from "./Modals/Modals";
 export { default as OrderItem } from "./Order/OrderItem";

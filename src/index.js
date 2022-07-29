@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import store, { persistor } from "./redux/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import "swiper/css/bundle";
 import "./styles/icon-font.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

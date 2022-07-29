@@ -12,3 +12,7 @@ export { default as Navbar } from "./Navbar";
 export { default as SelectPopup } from "./SelectPopup";
 export { default as MonthSelect } from "./MonthSelect";
 export { default as IconButton } from "./IconButton/IconButton";
+export { default as Slider } from "./Slider/Slider";
+export { default as Container } from "./Container/Container";
+export { default as Icon } from "./Icon/Icon";
+export { default as IconBlock } from "./IconBlock/IconBlock";

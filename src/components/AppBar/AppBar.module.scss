@@ -8,6 +8,7 @@
 
   &__first {
     display: flex;
+    width: 40%;
 
     @include screens-m {
       width: 55%;
