@@ -1,6 +1,5 @@
 export { default as Categories } from "../components/Categories";
 export { default as Header } from "../components/Header";
-export { default as SortPopup } from "../components/SortPopup";
 export { default as AdminDashboard } from "./Admin/AdminDashboard";
 export { default as Orders } from "./Admin/Orders/Orders";
 export { default as Products } from "./Admin/Products/Products";

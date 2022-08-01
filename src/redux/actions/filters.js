@@ -24,5 +24,5 @@ const setCategories = (categories) => {
 export const getCategories = () => async (dispatch) => {
   const categories = await fetchCategories();
 
-  dispatch(setCategories(categories));
+  dispatch(setCategories([{ id: 0, name: "All" }, ...categories]));
 };

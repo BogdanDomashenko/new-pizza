@@ -53,13 +53,13 @@ const Categories = React.memo(function Categories({
   );
 });
 
-/* Categories.propTypes = {
+/* Tabs.propTypes = {
   activeCategory: PropTypes.number,
   items: PropTypes.array(),
   onClickCategory: PropTypes.func,
 };
 
-Categories.defaultProps = {
+Tabs.defaultProps = {
   activeCategory: null,
   items: [],
 }; */
