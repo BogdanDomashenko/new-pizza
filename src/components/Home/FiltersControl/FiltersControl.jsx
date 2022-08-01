@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { setSortBy } from "../../../redux/actions/filters";
 
 import styles from "./FiltersControl.module.scss";
-import { SelectPopup } from "../../ui";
+import { Container, SelectPopup } from "../../ui";
 import classNames from "classnames";
 
 const FiltersControl = () => {
@@ -17,17 +17,19 @@ const FiltersControl = () => {
 
   return (
     <div className={styles.filters}>
-      <Categories />
-      <SelectPopup
-        label="Sort by"
-        items={["popular", "price", "alphabet"]}
-        activeItem={sortBy}
-        onSelectItem={onSelectSortType}
-        className={classNames(
-          "select__popup select__popup--success",
-          styles.sort
-        )}
-      />
+      <Container>
+        <Categories />
+        <SelectPopup
+          label="Sort by"
+          items={["popular", "price", "alphabet"]}
+          activeItem={sortBy}
+          onSelectItem={onSelectSortType}
+          className={classNames(
+            "select__popup select__popup--success",
+            styles.sort
+          )}
+        />
+      </Container>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { usePagination, usePizzas } from "../../../hooks";
 import { useCallback } from "react";
 import { addCartItem } from "../../../redux/actions/cart";
 import Pagination from "../../Pagination/Pagination";
+import { Container } from "../../ui";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -31,39 +32,41 @@ const Products = () => {
 
   return (
     <div className={styles.products}>
-      <h2 className={styles.title} id="menu">
-        Menu
-      </h2>
-      <div className={styles.items}>
-        {isLoaded && pizzas.length === Object.keys(selectedFields).length
-          ? pizzas.map((item, index) => {
-              const cartItem =
-                cartItems[
-                  cartIdGenerate(
-                    item.id,
-                    selectedFields[item.id]?.type,
-                    selectedFields[item.id]?.size
-                  )
-                ];
-              return selectedFields[item.id] ? (
-                <PizzaBlock
-                  key={index}
-                  cartCount={cartItem ? cartItem.count : 0}
-                  selectedFields={selectedFields[item.id]}
-                  {...item}
-                  onAddToCart={() => onAddItemToCart(item)}
-                />
-              ) : (
-                ""
-              );
-            })
-          : Array(8)
-              .fill()
-              .map((_, index) => <PizzaLoadingBlock key={index} />)}
-      </div>
-      <div className={styles.pagination}>
-        {totalCount ? <Pagination {...pagination} /> : ""}
-      </div>
+      <Container>
+        <h2 className={styles.title} id="menu">
+          Menu
+        </h2>
+        <div className={styles.items}>
+          {isLoaded && pizzas.length === Object.keys(selectedFields).length
+            ? pizzas.map((item, index) => {
+                const cartItem =
+                  cartItems[
+                    cartIdGenerate(
+                      item.id,
+                      selectedFields[item.id]?.type,
+                      selectedFields[item.id]?.size
+                    )
+                  ];
+                return selectedFields[item.id] ? (
+                  <PizzaBlock
+                    key={index}
+                    cartCount={cartItem ? cartItem.count : 0}
+                    selectedFields={selectedFields[item.id]}
+                    {...item}
+                    onAddToCart={() => onAddItemToCart(item)}
+                  />
+                ) : (
+                  ""
+                );
+              })
+            : Array(8)
+                .fill()
+                .map((_, index) => <PizzaLoadingBlock key={index} />)}
+        </div>
+        <div className={styles.pagination}>
+          {totalCount ? <Pagination {...pagination} /> : ""}
+        </div>
+      </Container>
     </div>
   );
 };

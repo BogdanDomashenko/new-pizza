@@ -1,17 +1,20 @@
 import React from "react";
-import { FiltersControl, MainSlider, Products } from "../components/Home";
-import { Container } from "../components/ui";
+import {
+  AboutUs,
+  FiltersControl,
+  MainSlider,
+  Products,
+} from "../components/Home";
 
 const Home = () => {
-  //!!! EXTRA RERENDR if we remove selectedFields and pizzas length equality check
+  //!!! EXTRA RERENDR if we remove selectedFields and pizzas length equality check in products
 
   return (
     <>
       <MainSlider />
-      <Container>
-        <FiltersControl />
-        <Products />
-      </Container>
+      <FiltersControl />
+      <Products />
+      <AboutUs />
     </>
   );
 };
