@@ -15,7 +15,6 @@ export {
 export { default as Modals } from "./Modals/Modals";
 export { default as OrderItem } from "./Order/OrderItem";
 export { default as Pagination } from "./Pagination/Pagination";
-export { default as ClientSidePaginationItems } from "./Pagination/ClientSidePaginationItems";
 export { default as PizzaBlock } from "./PizzaBlock";
 export { default as PizzaLoadingBlock } from "./PizzaBlock/LoadingBlock";
 export { default as ProtectedRoute } from "./ProtectedRoute";

@@ -5,6 +5,7 @@ import { setSortBy } from "../../../redux/actions/filters";
 
 import styles from "./FiltersControl.module.scss";
 import { SelectPopup } from "../../ui";
+import classNames from "classnames";
 
 const FiltersControl = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,10 @@ const FiltersControl = () => {
         items={["popular", "price", "alphabet"]}
         activeItem={sortBy}
         onSelectItem={onSelectSortType}
+        className={classNames(
+          "select__popup select__popup--success",
+          styles.sort
+        )}
       />
     </div>
   );

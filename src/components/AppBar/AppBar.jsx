@@ -9,6 +9,7 @@ import logo from "../../assets/img/pizza-logo.svg";
 import styles from "./AppBar.module.scss";
 import classNames from "classnames";
 import CartButton from "./CartButton/CartButton";
+import { Link as ScrollLink } from "react-scroll";
 
 const AppBar = () => {
   const [navBarOpened, setNavBarOpened] = useState(false);
@@ -70,9 +71,13 @@ const AppBar = () => {
       >
         <div className={styles.appBar__items__left}>
           <div className={styles.appBar__item}>
-            <Button className={classNames(styles.appBar__btn, "button--light")}>
-              Menu
-            </Button>
+            <ScrollLink to="menu" smooth={true}>
+              <Button
+                className={classNames(styles.appBar__btn, "button--light")}
+              >
+                Menu
+              </Button>
+            </ScrollLink>
           </div>
           <div className={styles.appBar__item}>
             <Button className={classNames(styles.appBar__btn, "button--light")}>

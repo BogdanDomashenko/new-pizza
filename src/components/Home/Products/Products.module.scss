@@ -1,0 +1,21 @@
+.products {
+  .title {
+    margin: 35px 0;
+  }
+
+  .items {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-around;
+    gap: 50px 20px;
+  }
+
+  .pagination {
+    margin-top: 40px;
+  }
+}

@@ -1,3 +1,5 @@
+@import "../../../styles/mixins";
+
 .tabs {
   display: flex;
   flex-wrap: wrap;
@@ -5,5 +7,12 @@
 
   .tab {
 
+  }
+
+  @include screens-s {
+    gap: 10px;
+  }
+  @include screens-xs {
+    gap: 10px 5px;
   }
 }
