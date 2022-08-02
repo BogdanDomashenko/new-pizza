@@ -2,9 +2,11 @@ import React from "react";
 import {
   AboutUs,
   Benefits,
+  Customers,
   FiltersControl,
   MainSlider,
   Products,
+  Reservation,
 } from "../components/Home";
 
 const Home = () => {
@@ -17,6 +19,8 @@ const Home = () => {
       <Products />
       <AboutUs />
       <Benefits />
+      <Reservation />
+      <Customers />
     </>
   );
 };

@@ -3,7 +3,7 @@ import { Container, IconBlock } from "../../ui";
 
 const Benefits = () => {
   return (
-    <Container variant="small">
+    <Container>
       <div className={styles.benefits}>
         <IconBlock
           iconName="icon-vegan"

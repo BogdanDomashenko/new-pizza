@@ -5,7 +5,7 @@ import Banner1 from "./Banners/Banner1/Banner1";
 
 const MainSlider = () => {
   return (
-    <Slider>
+    <Slider variant="default">
       <SwiperSlide>
         <Banner1 />
       </SwiperSlide>

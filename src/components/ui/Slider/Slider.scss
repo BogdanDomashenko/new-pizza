@@ -1,7 +1,7 @@
 @import "../../../styles/variables";
 @import "../../../styles/mixins";
 
-.swiper {
+.slider--default {
   width: 100%;
   height: 100%;
   margin-left: auto;
@@ -78,5 +78,28 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+}
+
+.slider--minimal {
+  .swiper-button-prev, .swiper-button-next {
+    display: none;
+  }
+
+  .swiper-pagination-bullet {
+    height: 12px;
+    width: 12px;
+    background-color: $color-muted;
+    opacity: 1;
+    border: 0;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: $color-primary;
+  }
+
+  .swiper-slide {
+    min-height: auto;
+    height: 100%;
   }
 }

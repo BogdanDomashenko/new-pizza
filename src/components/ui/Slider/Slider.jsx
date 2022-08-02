@@ -7,8 +7,10 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import "./Slider.scss";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
-const Slider = ({ children }) => {
+const Slider = ({ className, children, variant }) => {
   return (
     <Swiper
       slidesPerView={1}
@@ -19,11 +21,15 @@ const Slider = ({ children }) => {
       }}
       navigation={true}
       modules={[Pagination, Navigation]}
-      className="mySwiper"
+      className={classNames({ className, ["slider--" + variant]: variant })}
     >
       {children}
     </Swiper>
   );
+};
+
+Slider.propTypes = {
+  variant: PropTypes.oneOf(["default", "minimal"]),
 };
 
 export default Slider;

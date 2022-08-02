@@ -116,6 +116,21 @@ a {
 
 .text-normal {
   font-weight: 400;
+  font-size: 22px;
+}
+
+.text-light {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.subtitle {
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.text-muted {
+  color: $color-muted;
 }
 
 .header {
@@ -452,6 +467,10 @@ body {
 
 .container--small {
   width: 80%;
+
+  @include screens-s {
+    width: 90%;
+  }
 }
 
 .cart__top {
