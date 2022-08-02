@@ -10,10 +10,10 @@ import "./Slider.scss";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const Slider = ({ className, children, variant }) => {
+const Slider = ({ className, children, variant, slidesPerView = 1 }) => {
   return (
     <Swiper
-      slidesPerView={1}
+      slidesPerView={slidesPerView}
       spaceBetween={30}
       loop={true}
       pagination={{

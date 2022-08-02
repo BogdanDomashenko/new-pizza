@@ -1,10 +1,23 @@
-import CustomersSlider from "./CustomersSlider";
+import CustomersSlider from "./CustomersSlider/CustomersSlider";
+import styles from "./Customers.module.scss";
+import { Container } from "../../ui";
 
 const Customers = () => {
   return (
-    <div>
-      <CustomersSlider />
-    </div>
+    <Container variant="small">
+      <div className={styles.customers}>
+        <div className={styles.infoBlock}>
+          <span className="subtitle">What Our Customers Say</span>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna
+          </p>
+        </div>
+        <div className={styles.slider}>
+          <CustomersSlider />
+        </div>
+      </div>
+    </Container>
   );
 };
 
