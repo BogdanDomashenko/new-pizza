@@ -1,6 +1,7 @@
 import React from "react";
 import {
   AboutUs,
+  Benefits,
   FiltersControl,
   MainSlider,
   Products,
@@ -15,6 +16,7 @@ const Home = () => {
       <FiltersControl />
       <Products />
       <AboutUs />
+      <Benefits />
     </>
   );
 };

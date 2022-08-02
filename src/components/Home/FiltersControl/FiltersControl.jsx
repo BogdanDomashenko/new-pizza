@@ -16,8 +16,8 @@ const FiltersControl = () => {
   }, []);
 
   return (
-    <div className={styles.filters}>
-      <Container>
+    <Container>
+      <div className={styles.filters}>
         <Categories />
         <SelectPopup
           label="Sort by"
@@ -29,8 +29,8 @@ const FiltersControl = () => {
             styles.sort
           )}
         />
-      </Container>
-    </div>
+      </div>
+    </Container>
   );
 };
 

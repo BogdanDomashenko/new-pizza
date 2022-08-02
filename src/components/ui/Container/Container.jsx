@@ -2,9 +2,13 @@ import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
-const Container = ({ children, variant }) => {
+const Container = ({ children, variant, className }) => {
   return (
-    <div className={classNames("container", "container--" + variant)}>
+    <div
+      className={classNames(className, "container", {
+        ["container--" + variant]: variant,
+      })}
+    >
       {children}
     </div>
   );

@@ -16,7 +16,8 @@ const Button = ({
     <button
       style={style}
       type={type}
-      className={classNames(className, "button--" + variant, "button", {
+      className={classNames(className, "button", {
+        ["button--" + variant]: variant,
         "button-outline": outline,
       })}
       onClick={onClick}

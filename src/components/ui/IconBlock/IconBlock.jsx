@@ -16,6 +16,7 @@ const IconBlock = ({
   title,
   text,
   iconSize,
+  className,
 }) => {
   return (
     <div
@@ -27,7 +28,7 @@ const IconBlock = ({
       <Icon
         name={iconName}
         color={color}
-        className={styles.icon}
+        className={classNames(className, styles.icon)}
         size={iconSize}
       />
       <div className={styles.iconText}>
