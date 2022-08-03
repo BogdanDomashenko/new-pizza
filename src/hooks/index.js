@@ -11,3 +11,4 @@ export { default as useUserData } from "./useUserData";
 export { default as useTotalSales } from "./useTotalSales";
 export { default as useFilteredUsers } from "./useFilteredUsers";
 export { default as useLocale } from "./useLocale";
+export { default as useProduct } from "./useProduct";

@@ -1,15 +1,21 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import React from "react";
 import { useDispatch } from "react-redux";
 import { setSelectedField } from "../../redux/actions/pizzas";
 import { Button } from "../ui";
+import { addCartItem } from "../../redux/actions/cart";
+import { useProduct } from "../../hooks";
 
 import styles from "./PizzaBlock.module.scss";
+import { useCallback, useEffect, useRef } from "react";
+import {
+  setProductModalId,
+  toggleModalVisibility,
+} from "../../redux/actions/modals";
+import { MODALS } from "../../utils/constants";
 
 const PizzaBlock = ({
   id,
-  cartCount,
   imageUrl,
   name,
   types,
@@ -17,57 +23,78 @@ const PizzaBlock = ({
   price,
   category,
   rating,
-  onAddToCart,
-  selectedFields,
-  onClick,
 }) => {
   const dispatch = useDispatch();
 
-  //const item = useSelector((state) => state.pizzas.selectedFields[id]);
+  const { type, size, additionalPrice, cartCount } = useProduct(id);
 
   const onSelectSize = (size) => {
-    dispatch(setSelectedField(id, { type: selectedFields.type, size }));
+    dispatch(setSelectedField(id, { type: type, size }));
   };
 
   const onSelectType = (type) => {
-    dispatch(setSelectedField(id, { type, size: selectedFields.size }));
+    dispatch(setSelectedField(id, { type, size: size }));
   };
 
+  const onAddToCart = () => {
+    dispatch(
+      addCartItem({
+        item: { id, imageUrl, name, types, sizes, price },
+        selectedProps: { type, size, additionalPrice },
+      })
+    );
+  };
+
+  const productRef = useRef();
+
+  const onClick = useCallback((e) => {
+    const containsSelectorClass = !!e.target.closest("." + styles.selector);
+    const containsBottomClass = !!e.target.closest("." + styles.bottom);
+
+    if (!containsBottomClass && !containsSelectorClass) {
+      dispatch(setProductModalId(id));
+      dispatch(toggleModalVisibility(MODALS.ProductModal));
+    }
+  });
+
+  useEffect(() => {
+    productRef.current.addEventListener("click", onClick);
+    return () => productRef.current.removeEventListener("click", onClick);
+  }, []);
+
   return (
-    <div className={styles.pizzaBlock} onClick={onClick}>
+    <div className={styles.pizzaBlock} ref={productRef}>
       <img className={styles.image} src={imageUrl} alt="Pizza" />
       <h4 className={styles.title}>{name}</h4>
       <div className={styles.selector}>
-        <ul>
-          {types.map((type) => (
+        <ul className={styles.ul}>
+          {types.map((item) => (
             <li
-              key={type}
+              key={item}
               className={classNames({
-                [styles.active]: type === selectedFields.type,
+                [styles.active]: item === type,
                 [styles.disabled]: !types.includes(type),
               })}
-              onClick={() => onSelectType(type)}
+              onClick={() => onSelectType(item)}
             >
-              {type}
+              {item}
             </li>
           ))}
         </ul>
-        <ul>
-          {sizes.map((size) => (
+        <ul className={styles.ul}>
+          {sizes.map((item) => (
             <li
-              key={size}
-              className={size === selectedFields.size ? styles.active : ""}
-              onClick={() => onSelectSize(size)}
+              key={item}
+              className={item === size ? styles.active : ""}
+              onClick={() => onSelectSize(item)}
             >
-              {size} inch
+              {item} inch
             </li>
           ))}
         </ul>
       </div>
       <div className={styles.bottom}>
-        <div className={styles.price}>
-          from {price + selectedFields.additionalPrice}$
-        </div>
+        <div className={styles.price}>from {price + additionalPrice}$</div>
         <Button
           variant="outline-primary"
           className="button button--add"
