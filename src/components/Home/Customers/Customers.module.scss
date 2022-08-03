@@ -5,20 +5,29 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 5%;
-  padding: 50px;
+  padding: 50px 0;
 
   .infoBlock {
     width: 40%;
 
-    @include screens-m {
+    @include screens-l {
       width: 100%;
+    }
+
+    .text {
+      margin-top: 30px;
+      font-size: 22px;
+
+      @include screens-l {
+        margin-bottom: 40px;
+      }
     }
   }
 
   .slider {
     width: 55%;
 
-    @include screens-m {
+    @include screens-l {
       width: 100%;
     }
   }

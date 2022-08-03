@@ -29,7 +29,7 @@ const CustomersSlider = () => {
       slidesPerView={slidesPerView}
       className={styles.slider}
     >
-      <SwiperSlide>
+      <SwiperSlide className={styles.slide}>
         <CustomerBlock
           name="Luhui Vasyl"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
@@ -37,7 +37,7 @@ const CustomersSlider = () => {
           rating={4}
         />
       </SwiperSlide>
-      <SwiperSlide>
+      <SwiperSlide className={styles.slide}>
         <CustomerBlock
           name="Volia Eva"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
@@ -45,7 +45,7 @@ const CustomersSlider = () => {
           rating={5}
         />
       </SwiperSlide>
-      <SwiperSlide>
+      <SwiperSlide className={styles.slide}>
         <CustomerBlock
           name="Luhui Vasyl"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
@@ -53,7 +53,7 @@ const CustomersSlider = () => {
           rating={4}
         />
       </SwiperSlide>
-      <SwiperSlide>
+      <SwiperSlide className={styles.slide}>
         <CustomerBlock
           name="Volia Eva"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"

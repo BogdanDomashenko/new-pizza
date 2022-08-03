@@ -21,7 +21,7 @@ const Slider = ({ className, children, variant, slidesPerView = 1 }) => {
       }}
       navigation={true}
       modules={[Pagination, Navigation]}
-      className={classNames({ className, ["slider--" + variant]: variant })}
+      className={classNames(className, { ["slider--" + variant]: variant })}
     >
       {children}
     </Swiper>

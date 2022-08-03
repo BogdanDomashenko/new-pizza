@@ -8,7 +8,7 @@ const Customers = () => {
       <div className={styles.customers}>
         <div className={styles.infoBlock}>
           <span className="subtitle">What Our Customers Say</span>
-          <p>
+          <p className={styles.text}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna
           </p>
