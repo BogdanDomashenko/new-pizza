@@ -1,0 +1,68 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.sidebar {
+  background-color: $color-muted-light;
+  padding: 40px 0;
+
+  .content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .leftBlock {
+      width: 30%;
+      @include screens-l {
+        width: auto;
+        order: 1;
+
+      }
+    }
+
+    .centerBlock {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+
+      @include screens-l {
+        order: 0;
+        width: 100%;
+        margin-bottom: 30px;
+      }
+      @include screens-s {
+        flex-wrap: wrap;
+      }
+    }
+
+    .rightBlock {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .links {
+        display: flex;
+        gap: 20px;
+        margin-left: 10px;
+      }
+
+      @include screens-l {
+        order: 2;
+      }
+    }
+
+    .navigateButton {
+      background-color: $color-light;
+      color: black;
+
+      &:active, &:hover {
+        background-color: rgba($color-muted, .1);
+      }
+
+      @include screens-m {
+        display: none;
+      }
+    }
+  }
+}

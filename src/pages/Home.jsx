@@ -3,10 +3,12 @@ import {
   AboutUs,
   Benefits,
   Customers,
+  Feedback,
   FiltersControl,
   MainSlider,
   Products,
   Reservation,
+  Sidebar,
 } from "../components/Home";
 
 const Home = () => {
@@ -21,6 +23,8 @@ const Home = () => {
       <Benefits />
       <Reservation />
       <Customers />
+      <Feedback />
+      <Sidebar />
     </>
   );
 };

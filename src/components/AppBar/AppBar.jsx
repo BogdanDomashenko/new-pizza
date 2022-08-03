@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRole } from "../../hooks";
 import { logout } from "../../redux/actions/user";
 import { ROLES } from "../../utils/constants";
 import { Button, IconButton } from "../ui";
-import logo from "../../assets/img/pizza-logo.svg";
 import styles from "./AppBar.module.scss";
 import classNames from "classnames";
 import CartButton from "./CartButton/CartButton";
 import { Link as ScrollLink } from "react-scroll";
+import { Logo } from "../index";
+import { PHONE_NUMBER } from "../../config";
 
 const AppBar = () => {
   const [navBarOpened, setNavBarOpened] = useState(false);
@@ -56,13 +57,7 @@ const AppBar = () => {
           className={styles.appBar__toggleBtn}
           iconName="icon-burger-menu"
         />
-        <Link to="/" className={styles.appBar__logo}>
-          <img width="38" src={logo} alt="Pizza logo" />
-          <div>
-            <h1>Pizza</h1>
-            <p>the most delicious pizza in the universe</p>
-          </div>
-        </Link>
+        <Logo />
       </div>
       <nav
         className={classNames(styles.appBar__items, {
@@ -92,7 +87,7 @@ const AppBar = () => {
               styles.appBar__phoneNumber
             )}
           >
-            <a href="tel:+380992223311">+38 (099) 222 33 11</a>
+            <a href={"tel:" + PHONE_NUMBER}>{PHONE_NUMBER}</a>
           </div>
           {userRole !== ROLES.phantom ? (
             <div className={styles.appBar__item}>

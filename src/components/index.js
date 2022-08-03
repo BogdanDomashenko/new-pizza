@@ -23,3 +23,4 @@ export { default as OrderCard } from "./Order/OrderCard";
 export { default as Loader } from "./Loader";
 export { default as Properties } from "./Admin/Properties/Properties";
 export { default as AppBar } from "./AppBar/AppBar";
+export { default as Logo } from "./Logo/Logo";

@@ -11,6 +11,7 @@ const Button = ({
   type = "button",
   style,
   variant,
+  size,
 }) => {
   return (
     <button
@@ -18,6 +19,7 @@ const Button = ({
       type={type}
       className={classNames(className, "button", {
         ["button--" + variant]: variant,
+        ["button--" + size]: size,
         "button-outline": outline,
       })}
       onClick={onClick}
@@ -39,6 +41,7 @@ Button.propTypes = {
     "success",
     "small",
   ]),
+  size: PropTypes.oneOf(["big"]),
 };
 
 export default Button;
