@@ -8,6 +8,11 @@ import { useCallback } from "react";
 import { addCartItem } from "../../../redux/actions/cart";
 import Pagination from "../../Pagination/Pagination";
 import { Container } from "../../ui";
+import {
+  setProductModalId,
+  toggleModalVisibility,
+} from "../../../redux/actions/modals";
+import { MODALS } from "../../../utils/constants";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -28,6 +33,11 @@ const Products = () => {
 
   const onAddItemToCart = useCallback((item) => {
     dispatch(addCartItem({ item, selectedProps: selectedFields[item.id] }));
+  });
+
+  const onProductClick = useCallback((item) => {
+    dispatch(setProductModalId(item.id));
+    dispatch(toggleModalVisibility(MODALS.ProductModal));
   });
 
   return (
@@ -54,6 +64,7 @@ const Products = () => {
                     selectedFields={selectedFields[item.id]}
                     {...item}
                     onAddToCart={() => onAddItemToCart(item)}
+                    onClick={() => onProductClick(item)}
                   />
                 ) : (
                   ""

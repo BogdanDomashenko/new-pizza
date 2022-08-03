@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { setSelectedField } from "../../redux/actions/pizzas";
 import { Button } from "../ui";
 
+import styles from "./PizzaBlock.module.scss";
+
 const PizzaBlock = ({
   id,
   cartCount,
@@ -17,6 +19,7 @@ const PizzaBlock = ({
   rating,
   onAddToCart,
   selectedFields,
+  onClick,
 }) => {
   const dispatch = useDispatch();
 
@@ -31,17 +34,17 @@ const PizzaBlock = ({
   };
 
   return (
-    <div className="pizza-block">
-      <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
-      <h4 className="pizza-block__title">{name}</h4>
-      <div className="pizza-block__selector">
+    <div className={styles.pizzaBlock} onClick={onClick}>
+      <img className={styles.image} src={imageUrl} alt="Pizza" />
+      <h4 className={styles.title}>{name}</h4>
+      <div className={styles.selector}>
         <ul>
           {types.map((type) => (
             <li
               key={type}
               className={classNames({
-                active: type === selectedFields.type,
-                disabled: !types.includes(type),
+                [styles.active]: type === selectedFields.type,
+                [styles.disabled]: !types.includes(type),
               })}
               onClick={() => onSelectType(type)}
             >
@@ -53,7 +56,7 @@ const PizzaBlock = ({
           {sizes.map((size) => (
             <li
               key={size}
-              className={size === selectedFields.size ? "active" : ""}
+              className={size === selectedFields.size ? styles.active : ""}
               onClick={() => onSelectSize(size)}
             >
               {size} inch
@@ -61,8 +64,8 @@ const PizzaBlock = ({
           ))}
         </ul>
       </div>
-      <div className="pizza-block__bottom">
-        <div className="pizza-block__price">
+      <div className={styles.bottom}>
+        <div className={styles.price}>
           from {price + selectedFields.additionalPrice}$
         </div>
         <Button

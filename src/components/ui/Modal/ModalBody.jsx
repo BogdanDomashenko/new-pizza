@@ -1,8 +1,9 @@
 import classNames from "classnames";
-import React from "react";
+
+import styles from "./Modal.module.scss";
 
 const ModalBody = ({ children, className }) => {
-  return <div className={classNames("modal__body", className)}>{children}</div>;
+  return <div className={classNames(styles.body, className)}>{children}</div>;
 };
 
 export default ModalBody;

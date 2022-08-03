@@ -4,3 +4,10 @@ export const toggleModalVisibility = (modal) => {
     payload: modal,
   };
 };
+
+export const setProductModalId = (id) => {
+  return {
+    type: "SET_PRODUCT_MODAL_ID",
+    payload: id,
+  };
+};
