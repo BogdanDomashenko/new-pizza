@@ -1,10 +1,15 @@
 import classNames from "classnames";
 
 import styles from "./ProductCount.module.scss";
+import PropTypes from "prop-types";
 
-const ProductCount = ({ count, onInc, onDec }) => {
+const ProductCount = ({ count, onInc, onDec, size }) => {
   return (
-    <div className={styles.productCount}>
+    <div
+      className={classNames(styles.productCount, {
+        [styles.small]: size === "small",
+      })}
+    >
       <button className={styles.button} onClick={onDec}>
         -
       </button>
@@ -17,6 +22,10 @@ const ProductCount = ({ count, onInc, onDec }) => {
       </button>
     </div>
   );
+};
+
+ProductCount.propTypes = {
+  size: PropTypes.oneOf(["small"]),
 };
 
 export default ProductCount;

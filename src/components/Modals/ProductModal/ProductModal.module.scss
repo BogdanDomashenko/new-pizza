@@ -2,9 +2,11 @@
 @import "../../../styles/mixins";
 
 .modal {
+  max-width: 630px;
+  width: 100%;
 
   @include screens-m {
-    width: 100%;
+    width: 90%;
   }
 }
 

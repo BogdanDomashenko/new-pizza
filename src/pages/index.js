@@ -1,5 +1,5 @@
 export { default as Admin } from "./Admin";
-export { default as Cart } from "./Cart";
+// export { default as CartOLD } from "./CartOLD";
 export { default as Home } from "./Home";
 export { default as Order } from "./Order";
 export { default as PageNotFound } from "./PageNotFound";

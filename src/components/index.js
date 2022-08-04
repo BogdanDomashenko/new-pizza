@@ -5,8 +5,8 @@ export { default as Orders } from "./Admin/Orders/Orders";
 export { default as Products } from "./Admin/Products/Products";
 export { default as Statistics } from "./Admin/Statistics/Statistics";
 export { default as Stock } from "./Admin/Stock/Stock";
-export { default as CartItem } from "./Cart/CartItem";
-export { default as ClearCart } from "./Cart/ClearCart";
+// export { default as CartItem } from "./CartOLD/CartItem";
+// export { default as ClearCart } from "./CartOLD/ClearCart";
 export { default as LoginForm } from "./Forms/LoginForm";
 export {
   default as SignInForm,

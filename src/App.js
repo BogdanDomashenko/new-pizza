@@ -14,7 +14,6 @@ import {
 import { useRole } from "./hooks";
 import {
   Admin,
-  Cart,
   Home,
   Order,
   PageNotFound,
@@ -34,7 +33,7 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/cart" element={<Cart />} />
+        {/*<Route exact path="/cart" element={<CartOLD />} />*/}
         <Route exact path="/order/:id" element={<Order />} />
         <Route
           exact

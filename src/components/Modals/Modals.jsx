@@ -4,6 +4,7 @@ import { MODALS } from "../../utils/constants";
 import ProductModal from "./ProductModal/ProductModal";
 import СheckoutResultModal from "./СheckoutResultModal";
 import CheckoutModal from "./СheckoutModal";
+import CartModal from "./CartModal/CartModal";
 
 const Modals = () => {
   const modals = useSelector((state) => state.modals);
@@ -17,6 +18,7 @@ const Modals = () => {
       ) : (
         ""
       )}
+      {modals[MODALS.CartModal].visibility ? <CartModal /> : ""}
     </>
   );
 };

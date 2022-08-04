@@ -5,6 +5,17 @@
   align-items: center;
 }
 
+.small {
+  .button {
+    height: 30px;
+    width: 30px;
+  }
+
+  .count {
+    font-size: 20px;
+  }
+}
+
 .button {
   display: flex;
   height: 35px;
