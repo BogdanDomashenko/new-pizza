@@ -1,15 +1,23 @@
 import React from "react";
-import CheckoutModal from "./СheckoutModal";
-import СheckoutResultModal from "./СheckoutResultModal";
+import { useSelector } from "react-redux";
+import { MODALS } from "../../utils/constants";
 import ProductModal from "./ProductModal/ProductModal";
+import СheckoutResultModal from "./СheckoutResultModal";
+import CheckoutModal from "./СheckoutModal";
 
 const Modals = () => {
+  const modals = useSelector((state) => state.modals);
+
   return (
-    <div>
-      <ProductModal />
-      <CheckoutModal />
-      <СheckoutResultModal />
-    </div>
+    <>
+      {modals[MODALS.ProductModal].visibility ? <ProductModal /> : ""}
+      {modals[MODALS.СheckoutModal].visibility ? <CheckoutModal /> : ""}
+      {modals[MODALS.СheckoutResultModal].visibility ? (
+        <СheckoutResultModal />
+      ) : (
+        ""
+      )}
+    </>
   );
 };
 

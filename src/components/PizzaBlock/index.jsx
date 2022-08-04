@@ -1,7 +1,5 @@
-import classNames from "classnames";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { setSelectedField } from "../../redux/actions/pizzas";
 import { Button } from "../ui";
 import { addCartItem } from "../../redux/actions/cart";
 import { useProduct } from "../../hooks";
@@ -13,6 +11,7 @@ import {
   toggleModalVisibility,
 } from "../../redux/actions/modals";
 import { MODALS } from "../../utils/constants";
+import { Selector } from "../index";
 
 const PizzaBlock = ({
   id,
@@ -28,14 +27,6 @@ const PizzaBlock = ({
 
   const { type, size, additionalPrice, cartCount } = useProduct(id);
 
-  const onSelectSize = (size) => {
-    dispatch(setSelectedField(id, { type: type, size }));
-  };
-
-  const onSelectType = (type) => {
-    dispatch(setSelectedField(id, { type, size: size }));
-  };
-
   const onAddToCart = () => {
     dispatch(
       addCartItem({
@@ -48,51 +39,32 @@ const PizzaBlock = ({
   const productRef = useRef();
 
   const onClick = useCallback((e) => {
-    const containsSelectorClass = !!e.target.closest("." + styles.selector);
+    const containsSelectorClass = !!e.target.closest(".selector");
     const containsBottomClass = !!e.target.closest("." + styles.bottom);
 
     if (!containsBottomClass && !containsSelectorClass) {
       dispatch(setProductModalId(id));
       dispatch(toggleModalVisibility(MODALS.ProductModal));
     }
-  });
+  }, []);
 
   useEffect(() => {
     productRef.current.addEventListener("click", onClick);
-    return () => productRef.current.removeEventListener("click", onClick);
-  }, []);
+    return () => productRef?.current?.removeEventListener("click", onClick);
+  }, [productRef]);
 
   return (
     <div className={styles.pizzaBlock} ref={productRef}>
       <img className={styles.image} src={imageUrl} alt="Pizza" />
       <h4 className={styles.title}>{name}</h4>
-      <div className={styles.selector}>
-        <ul className={styles.ul}>
-          {types.map((item) => (
-            <li
-              key={item}
-              className={classNames({
-                [styles.active]: item === type,
-                [styles.disabled]: !types.includes(type),
-              })}
-              onClick={() => onSelectType(item)}
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
-        <ul className={styles.ul}>
-          {sizes.map((item) => (
-            <li
-              key={item}
-              className={item === size ? styles.active : ""}
-              onClick={() => onSelectSize(item)}
-            >
-              {item} inch
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Selector
+        id={id}
+        types={types}
+        sizes={sizes}
+        activeType={type}
+        activeSize={size}
+        className="selector"
+      />
       <div className={styles.bottom}>
         <div className={styles.price}>from {price + additionalPrice}$</div>
         <Button

@@ -10,7 +10,9 @@ const initialState = {
 const cart = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_CART_ITEM": {
-      const totalItemPrice = action.payload.item.price + action.payload.selectedProps.additionalPrice;
+      const totalItemPrice =
+        action.payload.item.price +
+        action.payload.selectedProps.additionalPrice;
       const currentId =
         action.payload.item.id +
         "_" +
@@ -21,14 +23,13 @@ const cart = (state = initialState, action) => {
         ? {
             item: action.payload.item,
             selectedProps: action.payload.selectedProps,
-            count: 1,
+            count: action.payload.count,
             totalPrice: totalItemPrice,
           }
         : {
             ...state.items[currentId],
             count: state.items[currentId].count + 1,
-            totalPrice:
-                totalItemPrice * (state.items[currentId].count + 1),
+            totalPrice: totalItemPrice * (state.items[currentId].count + 1),
           };
       const newItems = {
         ...state.items,
@@ -38,7 +39,10 @@ const cart = (state = initialState, action) => {
       return {
         ...state,
         items: newItems,
-        totalPrice: state.totalPrice + (currentPizzaItem.item.price + currentPizzaItem.selectedProps.additionalPrice),
+        totalPrice:
+          state.totalPrice +
+          (currentPizzaItem.item.price +
+            currentPizzaItem.selectedProps.additionalPrice),
         totalCount: state.totalCount + 1,
       };
     }
@@ -51,7 +55,9 @@ const cart = (state = initialState, action) => {
         ...state,
         items: newItems,
         totalCount: state.totalCount - currentItem.count,
-        totalPrice: state.totalPrice - (currentItem.totalPrice + currentItem.selectedProps.additionalPrice),
+        totalPrice:
+          state.totalPrice -
+          (currentItem.totalPrice + currentItem.selectedProps.additionalPrice),
       };
     }
     case "RESET_CART": {
@@ -60,7 +66,9 @@ const cart = (state = initialState, action) => {
     case "CART_ITEM_COUNT_INC": {
       const currentPizzaItem = state.items[action.payload];
 
-      const itemPrice = currentPizzaItem.item.price + currentPizzaItem.selectedProps.additionalPrice;
+      const itemPrice =
+        currentPizzaItem.item.price +
+        currentPizzaItem.selectedProps.additionalPrice;
 
       const newItems = {
         ...state.items,
@@ -81,7 +89,9 @@ const cart = (state = initialState, action) => {
     case "CART_ITEM_COUNT_DEC": {
       const currentPizzaItem = state.items[action.payload];
 
-      const itemPrice = currentPizzaItem.item.price + currentPizzaItem.selectedProps.additionalPrice;
+      const itemPrice =
+        currentPizzaItem.item.price +
+        currentPizzaItem.selectedProps.additionalPrice;
 
       const newItems = {
         ...state.items,
@@ -116,10 +126,10 @@ const cart = (state = initialState, action) => {
       };
     }
     case "SET_CHECKOUTING": {
-      return  {
+      return {
         ...state,
         isCheckouting: action.payload,
-      }
+      };
     }
     default:
       return state;

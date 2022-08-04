@@ -24,3 +24,5 @@ export { default as Loader } from "./Loader";
 export { default as Properties } from "./Admin/Properties/Properties";
 export { default as AppBar } from "./AppBar/AppBar";
 export { default as Logo } from "./Logo/Logo";
+export { default as Selector } from "./Selector/Selector";
+export { default as ProductCount } from "./ProductCount/ProductCount";

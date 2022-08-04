@@ -12,6 +12,7 @@ const Button = ({
   style,
   variant,
   size,
+  disabled,
 }) => {
   return (
     <button
@@ -21,6 +22,7 @@ const Button = ({
         ["button--" + variant]: variant,
         ["button--" + size]: size,
         "button-outline": outline,
+        disabled: disabled,
       })}
       onClick={onClick}
     >
