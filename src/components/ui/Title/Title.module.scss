@@ -1,0 +1,22 @@
+@import "../../../styles/variables";
+
+.title {
+  padding: 20px 0;
+  border-bottom: 1px dashed $color-muted-middle;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 22px;
+}

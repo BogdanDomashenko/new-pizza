@@ -50,7 +50,7 @@ const Modal = ({ name, title, children, className, onClose, visible }) => {
       <div className={classNames(styles.content, className)} ref={ref}>
         <div className={styles.head}>
           <h2>{title}</h2>
-          <div className={styles.close}>
+          <div className={styles.close} onClick={onCloseClick}>
             <span className="icon-remove"></span>
           </div>
         </div>

@@ -4,7 +4,7 @@ const initialState = {
   [MODALS.СheckoutResultModal]: { visibility: false },
   [MODALS.СheckoutModal]: { visibility: false },
   [MODALS.ProductModal]: { visibility: false },
-  [MODALS.CartModal]: { visibility: true },
+  [MODALS.CartModal]: { visibility: false },
 };
 
 const modals = (state = initialState, action) => {

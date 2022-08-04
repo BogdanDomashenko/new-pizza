@@ -1,4 +1,4 @@
-import { Modal, ModalBody } from "../../ui";
+import { Button, Modal, ModalBody, ModalBottom } from "../../ui";
 import { MODALS } from "../../../utils/constants";
 import { useCart } from "../../../hooks";
 import { CartItem } from "../../Cart";
@@ -7,16 +7,16 @@ import { cartIdGenerate } from "../../../utils/helpers";
 import styles from "./CartModal.module.scss";
 
 const CartModal = () => {
-  const cartItems = useCart();
+  const { items, totalPrice } = useCart();
 
   return (
     <Modal name={MODALS.CartModal} className={styles.modal}>
       <ModalBody className={styles.body}>
-        {cartItems.map((item) => (
+        {items.map((item) => (
           <CartItem
             {...item}
             key={cartIdGenerate(
-              item.id,
+              item.item.id,
               item.selectedProps.type,
               item.selectedProps.size
             )}
@@ -24,6 +24,17 @@ const CartModal = () => {
           />
         ))}
       </ModalBody>
+      <ModalBottom className={styles.bottom}>
+        <div>
+          <span className={styles.text}>Total Price: </span>
+          <span className={styles.totalPrice}>{totalPrice}$</span>
+        </div>
+        <div className={styles.buttonBlock}>
+          <Button variant="primary" size="big" className={styles.button}>
+            Checkout
+          </Button>
+        </div>
+      </ModalBottom>
     </Modal>
   );
 };

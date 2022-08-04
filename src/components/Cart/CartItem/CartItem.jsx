@@ -1,4 +1,3 @@
-import styles from "./CartItem.module.scss";
 import { ProductCount } from "../../index";
 import { useDispatch } from "react-redux";
 import {
@@ -6,16 +5,20 @@ import {
   cartItemCountInc,
 } from "../../../redux/actions/cart";
 import classNames from "classnames";
+import { cartIdGenerate } from "../../../utils/helpers";
+
+import styles from "./CartItem.module.scss";
 
 const CartItem = ({ item, count, selectedProps, totalPrice, countSize }) => {
   const dispatch = useDispatch();
+  const id = cartIdGenerate(item.id, selectedProps.type, selectedProps.size);
 
   const onIncCount = () => {
-    dispatch(cartItemCountInc());
+    dispatch(cartItemCountInc(id));
   };
 
   const onDecCount = () => {
-    dispatch(cartItemCountDec());
+    dispatch(cartItemCountDec(id));
   };
 
   return (
@@ -29,13 +32,15 @@ const CartItem = ({ item, count, selectedProps, totalPrice, countSize }) => {
             <span className="">{selectedProps.size}</span>
           </div>
         </div>
-        <ProductCount
-          count={count}
-          onInc={onIncCount}
-          onDec={onDecCount}
-          size={countSize}
-        />
-        <span className={styles.price}>{totalPrice}$</span>
+        <div className={styles.rightBlock}>
+          <ProductCount
+            count={count}
+            onInc={onIncCount}
+            onDec={onDecCount}
+            size={countSize}
+          />
+          <span className={styles.price}>{totalPrice}$</span>
+        </div>
       </div>
     </div>
   );

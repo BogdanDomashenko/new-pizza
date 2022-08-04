@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useRole } from "../../hooks";
 import { logout } from "../../redux/actions/user";
-import { ROLES } from "../../utils/constants";
+import { MODALS, ROLES } from "../../utils/constants";
 import { Button, IconButton } from "../ui";
 import styles from "./AppBar.module.scss";
 import classNames from "classnames";
@@ -11,6 +11,7 @@ import CartButton from "./CartButton/CartButton";
 import { Link as ScrollLink } from "react-scroll";
 import { Logo } from "../index";
 import { PHONE_NUMBER } from "../../config";
+import { toggleModalVisibility } from "../../redux/actions/modals";
 
 const AppBar = () => {
   const [navBarOpened, setNavBarOpened] = useState(false);
@@ -44,8 +45,7 @@ const AppBar = () => {
   };
 
   const onCartClick = () => {
-    navigate("/cart");
-    toggleNavbar();
+    dispatch(toggleModalVisibility(MODALS.CartModal));
   };
 
   return (
@@ -120,7 +120,9 @@ const AppBar = () => {
               </Button>
             </div>
           )}
-          <div className={styles.appBar__item}>
+          <div
+            className={classNames(styles.appBar__item, styles.appBar__cartItem)}
+          >
             <CartButton
               totalPrice={totalPrice}
               totalCount={totalCount}

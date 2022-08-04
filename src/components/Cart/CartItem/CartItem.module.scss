@@ -1,41 +1,86 @@
 @import "../../../styles/variables";
+@import "../../../styles/mixins";
 
 .item {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 150px;
+  height: 100%;
 
   &:not(:last-child) {
     margin-bottom: 30px;
   }
+
+  @include screens-xs {
+    border-bottom: 1px dashed $color-muted-middle;
+  }
 }
 
 .content {
-  height: 100%;
+  height: 140px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px dashed rgba($color-muted, .3);
+  border-bottom: 1px dashed $color-muted-middle;
   margin-left: 30px;
+  flex-wrap: wrap;
+
+  @include screens-xs {
+    margin-left: 15px;
+    height: auto;
+    border: none;
+    padding-bottom: 15px;
+  }
 }
 
 .image {
   width: 150px;
+
+  @include screens-s {
+    width: 80px;
+  }
+  @include screens-xs {
+    width: 60px;
+  }
+}
+
+.info {
+  width: 40%;
+}
+
+.rightBlock {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  @include screens-xs {
+    justify-content: end;
+  }
 }
 
 .selectedProps {
   display: flex;
   gap: 20px;
+  margin-top: 10px;
 }
 
 .price {
   font-size: 24px;
   font-weight: 700;
+
+  @include screens-xs {
+    font-size: 20px;
+  }
 }
 
 .title {
   font-size: 24px;
   font-weight: 700;
+
+  @include screens-xs {
+    font-size: 18px;;
+  }
 }

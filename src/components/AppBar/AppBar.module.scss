@@ -107,6 +107,12 @@
 
   }
 
+  &__cartItem {
+    @include screens-s {
+      display: none;
+    }
+  }
+
   &__phoneNumber {
     a {
       font-weight: 700;
@@ -124,6 +130,7 @@
     @include screens-m {
       order: 1;
       display: inline-block;
+      margin-top: 20px;
     }
   }
 
