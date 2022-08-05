@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 import styles from "./Title.module.scss";
 import classNames from "classnames";
 
-const Title = ({ children, variant = "h1", dashed, tiny }) => {
+const Title = ({ children, variant = "h1", dashed, tiny, className }) => {
   return (
     <div
-      className={classNames(styles.title, {
+      className={classNames(className, styles.title, {
         [styles.dashed]: dashed,
         [styles.tiny]: tiny,
       })}

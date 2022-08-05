@@ -1,4 +1,4 @@
-import { Container, Title } from "../ui";
+import { Button, Container, Title } from "../ui";
 import { PaymentForm } from "../Forms";
 import { useCart } from "../../hooks";
 
@@ -19,18 +19,33 @@ const Payment = () => {
           <div className={styles.form}>
             <PaymentForm />
           </div>
-          <div className={styles.cartItems}>
-            {items.map((item) => (
-              <CartItem
-                {...item}
-                key={cartIdGenerate(
-                  item.item.id,
-                  item.selectedProps.type,
-                  item.selectedProps.size
-                )}
-                countSize="small"
-              />
-            ))}
+          <div className={styles.cart}>
+            <div>
+              {items.map((item) => (
+                <CartItem
+                  {...item}
+                  key={cartIdGenerate(
+                    item.item.id,
+                    item.selectedProps.type,
+                    item.selectedProps.size
+                  )}
+                  countSize="small"
+                />
+              ))}
+            </div>
+            <div className={styles.cartUnderBlock}>
+              <Title variant="h4" dashed={true} className={styles.textBlock}>
+                <span>Delivery</span>
+                <span>3$</span>
+              </Title>
+              <div className={styles.totalPrice}>
+                <label>Total Price:</label>
+                <span>{totalPrice + 3}$</span>
+              </div>
+              <Button variant="primary" size="big">
+                Checkout
+              </Button>
+            </div>
           </div>
         </div>
       </div>

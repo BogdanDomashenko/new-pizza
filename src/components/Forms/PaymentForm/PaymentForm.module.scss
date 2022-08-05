@@ -1,3 +1,5 @@
+@import "../../../styles/variables";
+
 .form {
   display: flex;
   flex-direction: column;
@@ -5,7 +7,40 @@
   gap: 20px 0;
 }
 
+.firstBlock {
+  display: flex;
+  justify-content: space-between;
+
+  span, a {
+    color: $color-muted-middle;
+  }
+
+  span {
+    font-size: 15px;
+  }
+
+  a {
+    margin-left: 20px;
+    text-decoration: underline;
+    transition: color .1s ease-in-out;
+
+    &:hover {
+      color: $color-muted;
+    }
+  }
+}
+
 .doubleInput {
   display: flex;
   gap: 20px;
+}
+
+.paymentCheckboxes {
+  display: flex;
+  gap: 60px;
+}
+
+.checkbox {
+  display: flex;
+  gap: 7px;
 }
