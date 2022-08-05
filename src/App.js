@@ -17,7 +17,7 @@ import {
   Home,
   Order,
   PageNotFound,
-  Payment,
+  PaymentPage,
   Profile,
   SignIn,
   SignUp,
@@ -34,7 +34,7 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/payment" element={<Payment />} />
+        <Route exact path="/payment" element={<PaymentPage />} />
         {/*<Route exact path="/cart" element={<CartOLD />} />*/}
         <Route exact path="/order/:id" element={<Order />} />
         <Route

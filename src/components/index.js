@@ -26,3 +26,4 @@ export { default as AppBar } from "./AppBar/AppBar";
 export { default as Logo } from "./Logo/Logo";
 export { default as Selector } from "./Selector/Selector";
 export { default as ProductCount } from "./ProductCount/ProductCount";
+export { default as Payment } from "./Payment/Payment";
