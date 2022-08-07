@@ -1,9 +1,23 @@
 import { useSelector } from "react-redux";
 
 const useCart = () => {
-  const { items, totalPrice, totalCount } = useSelector((state) => state.cart);
+  const {
+    items,
+    totalPrice,
+    totalCount,
+    isCheckouting,
+    checkoutMessenge,
+    orderId,
+  } = useSelector((state) => state.cart);
 
-  return { items: Object.values(items), totalPrice, totalCount };
+  return {
+    items: Object.values(items),
+    totalPrice,
+    totalCount,
+    isCheckouting,
+    checkoutMessenge,
+    orderId,
+  };
 };
 
 export default useCart;

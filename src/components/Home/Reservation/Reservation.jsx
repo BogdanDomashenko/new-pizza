@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 const Reservation = () => {
   return (
-    <div className={styles.reservation}>
+    <div className={styles.reservation} id="reservation">
       <Container variant="small">
         <div className={styles.block}>
           <div className={styles.title}>

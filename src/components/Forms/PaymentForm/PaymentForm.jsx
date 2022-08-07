@@ -139,7 +139,6 @@ const PaymentForm = ({ form }) => {
       ) : (
         ""
       )}
-      <button type="submit">sub</button>
     </form>
   );
 };

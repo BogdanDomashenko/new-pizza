@@ -58,7 +58,7 @@ export const setCheckouting = (value) => ({
   payload: value,
 });
 
-export const checkoutCart = (number) => async (dispatch, getState) => {
+export const checkoutCart = (shippingData) => async (dispatch, getState) => {
   dispatch(setCheckouting(true));
 
   const state = getState();
@@ -73,7 +73,7 @@ export const checkoutCart = (number) => async (dispatch, getState) => {
     const { role } = state.user;
     const data =
       role === ROLES.phantom
-        ? await phantomCheckoutOrderQury(number, orderList)
+        ? await phantomCheckoutOrderQury(shippingData, orderList)
         : await checkoutOrder(orderList);
     dispatch(resetCart());
     dispatch(setCheckouting(false));
@@ -85,6 +85,7 @@ export const checkoutCart = (number) => async (dispatch, getState) => {
     dispatch(toggleModalVisibility(MODALS.СheckoutResultModal));
     dispatch(setOrderId(data.id));
   } catch (error) {
+    dispatch(setCheckouting(false));
     dispatch(setCheckoutCartMessenge(error.response.data.message));
   }
 };

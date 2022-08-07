@@ -416,7 +416,10 @@ body {
   width: 100%;
   border-top: 1px solid #f6f6f6;
   padding-top: 30px;
-  margin-top: 30px;
+
+  &:not(:first-child) {
+    margin-top: 30px;
+  }
 }
 
 .cart__item-img,
@@ -703,6 +706,10 @@ body {
   font-size: 30px;
 }
 
+.admin-dashboard {
+  padding: 30px 0;
+}
+
 .admin-dashboard__content {
   margin-top: 20px;
 }
@@ -788,6 +795,7 @@ body {
   display: flex;
   margin-top: 10px;
   margin-bottom: 20px;
+  gap: 10px;
 }
 
 .product__add .input,
@@ -948,7 +956,7 @@ body {
   overflow: hidden;
   transition: all 0.5s ease;
   background-color: #f8f8f8;
-  padding: 0px;
+  padding: 0px 80px;
   border-radius: 0px 0px 20px 20px;
 }
 
@@ -1043,6 +1051,10 @@ body {
 
 .properties__update-btn {
   margin-left: 10px;
+}
+
+.profile {
+  padding: 30px 0;
 }
 
 .profile__orders .orders__list {

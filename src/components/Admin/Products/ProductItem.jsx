@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deletePizza, updatePizza } from "../../../redux/actions/admin";
 import { Button, Input } from "../../ui";
@@ -27,12 +27,6 @@ const ProductItem = ({ id, name, imageUrl, price, category, rating }) => {
       resetForm();
     },
   });
-
-  useEffect(() => {
-    if (!isEditing) {
-      formik.resetForm();
-    }
-  }, [isEditing]);
 
   const onDeletePizza = () => {
     dispatch(deletePizza(id));

@@ -45,7 +45,9 @@ const AppBar = () => {
   };
 
   const onCartClick = () => {
-    dispatch(toggleModalVisibility(MODALS.CartModal));
+    if (totalCount) {
+      dispatch(toggleModalVisibility(MODALS.CartModal));
+    }
   };
 
   return (
@@ -75,9 +77,13 @@ const AppBar = () => {
             </ScrollLink>
           </div>
           <div className={styles.appBar__item}>
-            <Button className={classNames(styles.appBar__btn, "button--light")}>
-              Special offers
-            </Button>
+            <ScrollLink to="reservation" smooth={true}>
+              <Button
+                className={classNames(styles.appBar__btn, "button--light")}
+              >
+                Reservation
+              </Button>
+            </ScrollLink>
           </div>
         </div>
         <div className={styles.appBar__items__right}>

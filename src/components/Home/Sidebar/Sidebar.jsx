@@ -2,6 +2,7 @@ import styles from "./Sidebar.module.scss";
 import { Logo } from "../../index";
 import { Button, Container } from "../../ui";
 import { PHONE_NUMBER } from "../../../config";
+import { Link as ScrollLink } from "react-scroll";
 
 const Sidebar = () => {
   return (
@@ -18,7 +19,9 @@ const Sidebar = () => {
             </Button>
           </div>
           <div className={styles.rightBlock}>
-            <Button className={styles.navigateButton}>Menu</Button>
+            <ScrollLink to="menu" smooth={true}>
+              <Button className={styles.navigateButton}>Menu</Button>
+            </ScrollLink>
             <Button className={styles.navigateButton}>Contact us</Button>
             <div className={styles.links}>
               <a href="https://facebook.com" target="_blank">
