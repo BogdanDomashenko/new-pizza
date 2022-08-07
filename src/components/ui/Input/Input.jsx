@@ -11,7 +11,7 @@ function Input(props) {
       })}
     >
       <div className={styles.icon}>{props.icon}</div>
-      <input {...props}></input>
+      <input {...props} placeholder="   "></input>
       {props.label ? <div className={styles.label}>{props.label}</div> : ""}
       {props.error ? <span className={styles.error}>{props.error}</span> : ""}
     </div>

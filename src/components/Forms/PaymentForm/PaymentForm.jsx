@@ -1,50 +1,102 @@
-import { useState } from "react";
 import { Checkbox, Input, Title } from "../../ui";
 import PhoneInput from "react-phone-input-2";
 import { PAYMENT_METHODS } from "../../../utils/constants";
 
 import styles from "./PaymentForm.module.scss";
 import { NavLink } from "react-router-dom";
+import { checkFormikError } from "../../../utils/helpers";
 
-const PaymentForm = () => {
-  const [paymentMethod, setPaymentMethod] = useState(PAYMENT_METHODS.card);
-
+const PaymentForm = ({ form }) => {
   const handlePaymentMethodChange = (e) => {
-    setPaymentMethod(e.currentTarget.value);
+    form.setValues({
+      ...form.values,
+      paymentMethod: e.currentTarget.value,
+    });
   };
 
   const isSelectedMethod = (method) => {
-    return method === paymentMethod;
+    return method === form.values.paymentMethod;
   };
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={form.handleSubmit}>
       <div className={styles.firstBlock}>
         <Title variant="h4" tiny={true}>
           Contact information
         </Title>
-        <div>
+        <div className={styles.subText}>
           <span>Already have an account?</span>
           <NavLink to="/auth/sign-in">Log in</NavLink>
         </div>
       </div>
-      <Input label="Email" type="email" />
+      <Input
+        label="Email"
+        type="email"
+        id="email"
+        name="email"
+        value={form.values.email}
+        onChange={form.handleChange}
+        error={checkFormikError(form, "email")}
+      />
       <Title variant="h4" tiny={true}>
         Shipping address
       </Title>
       <div className={styles.doubleInput}>
-        <Input label="First Name" />
-        <Input label="Last Name" />
+        <Input
+          label="First Name"
+          id="firstName"
+          name="firstName"
+          error={checkFormikError(form, "firstName")}
+          value={form.values.firstName}
+          onChange={form.handleChange}
+        />
+        <Input
+          label="Last Name"
+          id="lastName"
+          name="lastName"
+          error={checkFormikError(form, "lastName")}
+          value={form.values.lastName}
+          onChange={form.handleChange}
+        />
       </div>
       <div className={styles.doubleInput}>
-        <Input label="City" />
-        <Input label="Post code" />
+        <Input
+          label="City"
+          id="city"
+          name="city"
+          error={checkFormikError(form, "city")}
+          value={form.values.city}
+          onChange={form.handleChange}
+        />
+        <Input
+          label="Post code"
+          id="postCode"
+          name="postCode"
+          error={checkFormikError(form, "postCode")}
+          value={form.values.postCode}
+          onChange={form.handleChange}
+        />
       </div>
-      <Input label="Address" />
+      <Input
+        label="Address"
+        id="address"
+        name="address"
+        error={checkFormikError(form, "address")}
+        value={form.values.address}
+        onChange={form.handleChange}
+      />
       <PhoneInput
         country="us"
         id="phone"
         name="phone"
+        isValid={!form.errors.phone}
+        onChange={(phone, country) =>
+          form.setValues({
+            ...form.values,
+            phone: phone,
+          })
+        }
+        value={form.values.phone}
         inputStyle={{ width: "100%" }}
       />
       <Title variant="h4" tiny={true}>
@@ -72,7 +124,7 @@ const PaymentForm = () => {
           Card
         </div>
       </div>
-      {paymentMethod === PAYMENT_METHODS.card ? (
+      {form.values.paymentMethod === PAYMENT_METHODS.card ? (
         <>
           <Input label="Card Number" />
           <div className={styles.doubleInput}>
@@ -87,6 +139,7 @@ const PaymentForm = () => {
       ) : (
         ""
       )}
+      <button type="submit">sub</button>
     </form>
   );
 };

@@ -60,6 +60,10 @@
   }
 }
 
+.productCount {
+  margin-left: auto;
+}
+
 .selectedProps {
   display: flex;
   gap: 20px;
@@ -69,6 +73,7 @@
 .price {
   font-size: 24px;
   font-weight: 700;
+  margin-left: auto;
 
   @include screens-xs {
     font-size: 20px;

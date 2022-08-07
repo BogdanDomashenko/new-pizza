@@ -22,11 +22,15 @@
       box-shadow: 0 0 0 1px #1976d2;
     }
 
-    &:focus ~ .label {
+    &:focus ~ .label, &:not(:placeholder-shown) ~ .label {
       background: white;
       color: #1976d2;
       transform: none;
       top: -7px;
+    }
+
+    &:not(:focus) ~ .label {
+      color: $color-muted;
     }
   }
 }
@@ -36,11 +40,18 @@
   color: $color-danger;
 
   input {
-    outline-color: $color-danger;
+    border-color: $color-danger;
+  }
+
+  input:not(:focus) ~ .label {
+    color: $color-danger;
   }
 }
 
 .error {
+  position: absolute;
+  left: 0;
+  bottom: -20px;
   font-size: 14px;
   color: #f53737;
 }

@@ -1,16 +1,32 @@
+@import "../../styles/mixins";
+
 .content {
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
   padding-bottom: 50px;
+  flex-wrap: wrap;
 }
 
 .form {
   width: 52%;
+
+  @include screens-m {
+    width: 100%;
+  }
 }
 
 .cart {
   width: 40%;
+
+  @include screens-l {
+    width: 45%;
+  }
+
+  @include screens-m {
+    width: 100%;
+    margin-top: 30px;
+  }
 }
 
 .cartUnderBlock {

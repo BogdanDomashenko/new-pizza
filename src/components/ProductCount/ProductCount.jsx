@@ -3,10 +3,10 @@ import classNames from "classnames";
 import styles from "./ProductCount.module.scss";
 import PropTypes from "prop-types";
 
-const ProductCount = ({ count, onInc, onDec, size }) => {
+const ProductCount = ({ count, onInc, onDec, size, className }) => {
   return (
     <div
-      className={classNames(styles.productCount, {
+      className={classNames(className, styles.productCount, {
         [styles.small]: size === "small",
       })}
     >

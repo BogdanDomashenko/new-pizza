@@ -1,4 +1,5 @@
 @import "../../../styles/variables";
+@import "../../../styles/mixins";
 
 .form {
   display: flex;
@@ -10,9 +11,14 @@
 .firstBlock {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
+
+  .subText {
+    text-align: right;
+  }
 
   span, a {
-    color: $color-muted-middle;
+    color: $color-muted-middle;;
   }
 
   span {
@@ -27,12 +33,28 @@
     &:hover {
       color: $color-muted;
     }
+
+    @include screens-l {
+      margin-left: 5px;
+    }
+
+    @include screens-m {
+      margin-left: 20px;
+    }
+
+    @include screens-xs {
+      margin-left: 10px;
+    }
   }
 }
 
 .doubleInput {
   display: flex;
   gap: 20px;
+
+  @include screens-xs {
+    gap: 10px;
+  }
 }
 
 .paymentCheckboxes {

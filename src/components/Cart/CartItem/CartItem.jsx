@@ -38,6 +38,7 @@ const CartItem = ({ item, count, selectedProps, totalPrice, countSize }) => {
             onInc={onIncCount}
             onDec={onDecCount}
             size={countSize}
+            className={styles.productCount}
           />
           <span className={styles.price}>{totalPrice}$</span>
         </div>

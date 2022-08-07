@@ -1,5 +1,5 @@
 import { Button, Container, Title } from "../ui";
-import { PaymentForm } from "../Forms";
+import { PaymentForm, usePaymentForm } from "../Forms";
 import { useCart } from "../../hooks";
 
 import styles from "./Payment.module.scss";
@@ -9,6 +9,12 @@ import { cartIdGenerate } from "../../utils/helpers";
 const Payment = () => {
   const { items, totalPrice } = useCart();
 
+  const handleSubmit = (values) => {
+    console.log(values);
+  };
+
+  const form = usePaymentForm(handleSubmit);
+
   return (
     <Container>
       <div className={styles.payment}>
@@ -17,7 +23,7 @@ const Payment = () => {
         </Title>
         <div className={styles.content}>
           <div className={styles.form}>
-            <PaymentForm />
+            <PaymentForm form={form} />
           </div>
           <div className={styles.cart}>
             <div>
@@ -42,7 +48,7 @@ const Payment = () => {
                 <label>Total Price:</label>
                 <span>{totalPrice + 3}$</span>
               </div>
-              <Button variant="primary" size="big">
+              <Button onClick={form.handleSubmit} variant="primary" size="big">
                 Checkout
               </Button>
             </div>
