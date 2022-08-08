@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { OrderCard } from "../components";
 import { usePagination, useUserData } from "../hooks";
 import { getUserOrders } from "../redux/actions/user";
+import parsePhoneNumber from "libphonenumber-js";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -16,13 +17,16 @@ const Profile = () => {
 
   return (
     <div className="container profile">
-      <h2>Phone number: {user.phoneNumber}</h2>
+      <h2>
+        Phone number:
+        {parsePhoneNumber("+" + user.phoneNumber).formatInternational()}
+      </h2>
       <div className="profile__orders">
         <h3>Orders</h3>
         <div className="orders__list">
           {list.length ? (
             list.map((item) =>
-              item ? (
+              item.pizzaOrders?.length ? (
                 <OrderCard className="orders__item" key={item.id} {...item} />
               ) : (
                 ""

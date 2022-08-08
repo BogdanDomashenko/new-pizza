@@ -1,12 +1,15 @@
 import { Checkbox, Input, Title } from "../../ui";
 import PhoneInput from "react-phone-input-2";
-import { PAYMENT_METHODS } from "../../../utils/constants";
+import { PAYMENT_METHODS, ROLES } from "../../../utils/constants";
 
 import styles from "./PaymentForm.module.scss";
 import { NavLink } from "react-router-dom";
 import { checkFormikError } from "../../../utils/helpers";
+import { useRole } from "../../../hooks";
 
 const PaymentForm = ({ form }) => {
+  const isLoggined = useRole() !== ROLES.phantom;
+
   const handlePaymentMethodChange = (e) => {
     form.setValues({
       ...form.values,
@@ -24,10 +27,14 @@ const PaymentForm = ({ form }) => {
         <Title variant="h4" tiny={true}>
           Contact information
         </Title>
-        <div className={styles.subText}>
-          <span>Already have an account?</span>
-          <NavLink to="/auth/sign-in">Log in</NavLink>
-        </div>
+        {!isLoggined ? (
+          <div className={styles.subText}>
+            <span>Already have an account?</span>
+            <NavLink to="/auth/sign-in">Log in</NavLink>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <Input
         label="Email"

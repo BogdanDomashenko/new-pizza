@@ -119,6 +119,14 @@ a {
   background: rgba(0, 0, 0, .9);
 }
 
+::selection {
+  background: $color-success;
+}
+
+::-moz-selection {
+  background: $color-success;
+}
+
 .text-bold {
   font-weight: 700;
   font-size: 18px;
@@ -292,7 +300,7 @@ a {
 }
 
 body {
-  background-color: #ffdf8c;
+  background-color: $color-warning-light;
   padding: 50px 0;
 }
 
@@ -764,7 +772,7 @@ body {
 }
 
 .error {
-  color: rgb(255, 55, 55);
+  color: $color-danger;
   font-weight: 700;
 }
 
@@ -774,8 +782,8 @@ body {
   -webkit-transform: scale(1.5);
   -o-transform: scale(1.5);
   transform: scale(1.5);
-  accent-color: #f24701;
-  border-color: #f24701;
+  accent-color: $color-primary-dark;
+  border-color: $color-primary-dark;
 }
 
 .flex {
@@ -815,7 +823,7 @@ body {
 }
 
 .order__header h3 {
-  color: #f24701;
+  color: $color-primary-dark;
 }
 
 .pagination {
@@ -849,11 +857,11 @@ body {
 }
 
 .pagination__link--active:hover {
-  background-color: #f24701;
+  background-color: $color-primary;
 }
 
 .pagination__link--active:active {
-  background-color: #de4101;
+  background-color: $color-primary-dark;
   -webkit-transform: translateY(1px);
   transform: translateY(1px);
 }
@@ -1074,6 +1082,11 @@ body {
 
 .properties__add button {
   height: 40px;
+}
+
+.login-form__error {
+  margin-top: 20px;
+  color: $color-danger;
 }
 
 /* medium devices */

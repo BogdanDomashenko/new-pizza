@@ -74,7 +74,7 @@ export const checkoutCart = (shippingData) => async (dispatch, getState) => {
     const data =
       role === ROLES.phantom
         ? await phantomCheckoutOrderQury(shippingData, orderList)
-        : await checkoutOrder(orderList);
+        : await checkoutOrder(shippingData, orderList);
     dispatch(resetCart());
     dispatch(setCheckouting(false));
     dispatch(

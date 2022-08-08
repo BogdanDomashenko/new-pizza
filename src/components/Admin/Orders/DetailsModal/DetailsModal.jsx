@@ -2,6 +2,7 @@ import { Modal, ModalBody, Title } from "../../../ui";
 import { useDispatch, useSelector } from "react-redux";
 import { resetDetailsOrderModal } from "../../../../redux/actions/admin";
 import { Loader, OrderItem } from "../../../index";
+import parsePhoneNumber from "libphonenumber-js";
 
 import styles from "./DetailsModal.module.scss";
 
@@ -53,7 +54,9 @@ const DetailsModal = () => {
                 </div>
                 <div className={styles.infoItem}>
                   <Title variant="h4">Phone:</Title>
-                  {shippingData.phone}
+                  {parsePhoneNumber(
+                    "+" + shippingData.phone
+                  ).formatInternational()}
                 </div>
                 <div className={styles.infoItem}>
                   <Title variant="h4">City:</Title>

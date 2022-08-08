@@ -14,9 +14,9 @@ const useProduct = (id) => {
   const cartCount = cartItem ? cartItem.count : 0;
 
   return {
-    type: selectedFields.type,
-    size: selectedFields.size,
-    additionalPrice: selectedFields.additionalPrice,
+    type: selectedFields?.type,
+    size: selectedFields?.size,
+    additionalPrice: selectedFields?.additionalPrice,
     cartCount,
   };
 };

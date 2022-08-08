@@ -9,6 +9,7 @@ import {
 } from "../../../redux/actions/admin";
 import { Button, SelectPopup } from "../../ui";
 import { useLocale } from "../../../hooks";
+import parsePhoneNumber from "libphonenumber-js";
 
 const statusesList = Object.values(ORDER_STATUSES);
 
@@ -39,7 +40,12 @@ const Order = ({ id, user, count, status, date, price, editing }) => {
     <tr key={id}>
       <td>{id}</td>
       {editing && <td>{user && user.id}</td>}
-      {editing && <td>{user && user.phoneNumber}</td>}
+      {editing && (
+        <td>
+          {user &&
+            parsePhoneNumber("+" + user.phoneNumber).formatInternational()}
+        </td>
+      )}
       <td>{count}</td>
       <td>{price}$</td>
       <td>

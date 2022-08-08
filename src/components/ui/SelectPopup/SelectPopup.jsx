@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
 function SelectPopup({
+  name,
   label,
   items,
   activeItem,
@@ -50,7 +51,9 @@ function SelectPopup({
           />
         </svg>
         {label && <b>{label}</b>}
-        <span onClick={toggleVisiblePopup}>{activeItem}</span>
+        <span onClick={toggleVisiblePopup}>
+          {activeItem || label || name || "select"}
+        </span>
       </div>
       {visiblePopup && (
         <div className="select__popup">

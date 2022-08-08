@@ -1,4 +1,8 @@
+@import "../../../styles/mixins";
+
 .products {
+  margin: 0 auto;
+
   .title {
     margin: 35px 0;
   }
@@ -12,7 +16,22 @@
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-around;
-    gap: 50px 20px;
+    gap: 50px 10px;
+
+    @include screens-l {
+      gap: 50px 15%;
+      justify-content: center;
+    }
+
+    @include screens-s {
+      gap: 50px 10px;
+      justify-content: space-around;
+    }
+
+    @include screens-xs {
+      gap: 50px 10px;
+      justify-content: center;
+    }
   }
 
   .pagination {

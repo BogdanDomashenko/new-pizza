@@ -1,14 +1,12 @@
 import { PizzaBlock, PizzaLoadingBlock } from "../../index";
 
 import styles from "./Products.module.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { usePagination, usePizzas } from "../../../hooks";
 import Pagination from "../../Pagination/Pagination";
 import { Container } from "../../ui";
 
 const Products = () => {
-  const dispatch = useDispatch();
-
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
 
   const { totalCount } = useSelector(({ pizzas }) => pizzas.items);
