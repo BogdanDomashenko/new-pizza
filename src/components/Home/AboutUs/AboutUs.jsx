@@ -4,7 +4,7 @@ import { Container } from "../../ui";
 
 const AboutUs = () => {
   return (
-    <div className={styles.aboutUs}>
+    <div className={styles.aboutUs} id="aboutUs">
       <Container variant="small">
         <div className={styles.content}>
           <img src={restaurantImg} alt="restaurant" className={styles.img} />

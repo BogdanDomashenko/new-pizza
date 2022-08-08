@@ -3,7 +3,7 @@ import { PaymentForm, usePaymentForm } from "../Forms";
 import { useCart } from "../../hooks";
 import { CartItem } from "../Cart";
 import { cartIdGenerate } from "../../utils/helpers";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./Payment.module.scss";
 import {
@@ -13,15 +13,19 @@ import {
 import { Loader } from "../index";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { setUserShippingData } from "../../redux/actions/user";
+import { getDeliveryPrice } from "../../redux/actions/pizzas";
 
 const Payment = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { delivery } = useSelector((state) => state.pizzas);
   const { items, totalPrice, isCheckouting, checkoutMessenge, orderId } =
     useCart();
 
   const handleSubmit = (values) => {
+    dispatch(setUserShippingData(values));
     dispatch(checkoutCart(values));
   };
 
@@ -34,6 +38,11 @@ const Payment = () => {
   }, [orderId]);
 
   useEffect(() => {
+    dispatch(getDeliveryPrice());
+
+    if (!items.length) {
+      navigate("/");
+    }
     dispatch(setCheckoutCartMessenge(null));
   }, []);
 
@@ -72,11 +81,11 @@ const Payment = () => {
                     className={styles.textBlock}
                   >
                     <span>Delivery</span>
-                    <span>3$</span>
+                    <span>{delivery?.price || 0}$</span>
                   </Title>
                   <div className={styles.totalPrice}>
                     <label>Total Price:</label>
-                    <span>{totalPrice + 3}$</span>
+                    <span>{totalPrice + (delivery?.price || 0)}$</span>
                   </div>
                   <Button
                     onClick={form.handleSubmit}

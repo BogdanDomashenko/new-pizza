@@ -3,11 +3,13 @@ import {
   addTypeQuery,
   changeSizeQuery,
   changeTypeQuery,
+  deleteCallBackQuery,
   deleteSizeQuery,
   deleteTypeQuery,
   fetchAdminPizzas,
   fetchAdminUsers,
   fetchAllStockPizzas,
+  fetchCallBacks,
   fetchOrdersList,
   fetchPizzasSales,
   fetchPizzasSalesBy,
@@ -19,7 +21,11 @@ import {
   updateOrderQuery,
   updatePizzaQuery,
 } from "../../services/admin.service";
-import { addPizzaQuery, deletePizzaQuery } from "../../services/pizza.service";
+import {
+  addPizzaQuery,
+  deletePizzaQuery,
+  setDeliveryPriceQuery,
+} from "../../services/pizza.service";
 import {
   addPizzaSize,
   addPizzaType,
@@ -150,6 +156,16 @@ const setDetailsOrderModal = (visibility, products, shippingData) => ({
 
 export const resetDetailsOrderModal = () => ({
   type: "RESET_DETAILS_ORDER_MODAL",
+});
+
+const setCallBacks = (callBacks) => ({
+  type: "SET_CALL_BACKS",
+  payload: callBacks,
+});
+
+const deleteAdminCallBack = (id) => ({
+  type: "DELETE_CALL_BACK",
+  payload: id,
 });
 
 export const setTimeoutAdminError = (error) => async (dispatch) => {
@@ -383,4 +399,26 @@ export const showOrderDetails = (id) => async (dispatch) => {
   } catch (error) {
     dispatch(setTimeoutAdminError(error.response.data.message));
   }
+};
+
+export const getCallBacks = () => async (dispatch) => {
+  try {
+    const callBacks = await fetchCallBacks();
+    dispatch(setCallBacks(callBacks));
+  } catch (error) {
+    dispatch(setTimeoutAdminError(error.response.data.message));
+  }
+};
+
+export const deleteCallBack = (id) => async (dispatch) => {
+  try {
+    await deleteCallBackQuery(id);
+    dispatch(deleteAdminCallBack(id));
+  } catch (error) {
+    dispatch(setTimeoutAdminError(error.response.data.message));
+  }
+};
+
+export const setDeliveryPrice = (price) => async (dispatch) => {
+  await setDeliveryPriceQuery(price);
 };

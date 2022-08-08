@@ -1,6 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import {
+  CallBack,
+  Delivery,
   Header,
   Modals,
   Orders,
@@ -52,6 +54,8 @@ function App() {
           <Route exact path="stock" element={<Stock />} />
           <Route exact path="statistics" element={<Statistics />} />
           <Route exact path="users" element={<Users />} />
+          <Route exact path="call" element={<CallBack />} />
+          <Route exact path="delivery" element={<Delivery />} />
         </Route>
         <Route exact path="/auth">
           <Route

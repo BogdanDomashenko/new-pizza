@@ -1,5 +1,5 @@
 const MODALS = {
-  СheckoutModal: "СheckoutModal",
+  FeedbackModal: "FeedbackModal",
   СheckoutResultModal: "СheckoutResultModal",
   ProductModal: "ProductModal",
   CartModal: "CartModal",

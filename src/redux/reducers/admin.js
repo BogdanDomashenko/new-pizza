@@ -18,6 +18,7 @@ const initialState = {
     products: [],
     shippingData: {},
   },
+  callBacks: {},
   error: null,
 };
 
@@ -236,6 +237,18 @@ const admin = (state = initialState, action) => {
       return {
         ...state,
         detailsOrderModal: initialState.detailsOrderModal,
+      };
+    }
+    case "SET_CALL_BACKS": {
+      return {
+        ...state,
+        callBacks: action.payload,
+      };
+    }
+    case "DELETE_CALL_BACK": {
+      return {
+        ...state,
+        callBacks: state.callBacks.filter((item) => item.id !== action.payload),
       };
     }
     default:

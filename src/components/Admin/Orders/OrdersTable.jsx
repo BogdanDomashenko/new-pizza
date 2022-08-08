@@ -1,51 +1,49 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { usePagination } from "../../../hooks";
 import { getOrders } from "../../../redux/actions/admin";
-import { ORDER_STATUSES } from "../../../utils/constants";
 import { Pagination } from "../../";
-import { SelectPopup } from "../../ui";
 import Order from "./Order";
 import DetailsModal from "./DetailsModal/DetailsModal";
 
 const OrdersTable = ({ orders, totalCount, editing }) => {
   const dispatch = useDispatch();
-  const [filterStatusName, setFilterStatusName] = useState("All");
-
-  const [filteredOrders, setFilteredOrders] = useState(orders);
+  // const [filterStatusName, setFilterStatusName] = useState("All");
+  //
+  // const [filteredOrders, setFilteredOrders] = useState(orders);
 
   const pagination = usePagination(totalCount, 8);
-  const statusesList = Object.values(ORDER_STATUSES);
+  // const statusesList = Object.values(ORDER_STATUSES);
 
   useEffect(() => {
     dispatch(getOrders(pagination.page, pagination.rowsPerPage));
   }, [pagination.page]);
 
-  useEffect(() => {
-    if (filterStatusName === "All") {
-      setFilteredOrders(orders);
-    } else {
-      setFilteredOrders(
-        orders.filter((order) => order.status === filterStatusName)
-      );
-    }
-  }, [filterStatusName, orders]);
+  // useEffect(() => {
+  //   if (filterStatusName === "All") {
+  //     setFilteredOrders(orders);
+  //   } else {
+  //     setFilteredOrders(
+  //       orders.filter((order) => order.status === filterStatusName)
+  //     );
+  //   }
+  // }, [filterStatusName, orders]);
 
-  const onSelectStatus = (status) => {
-    setFilterStatusName(status);
-  };
+  // const onSelectStatus = (status) => {
+  //   setFilterStatusName(status);
+  // };
 
   return (
     <div className="orders">
       <DetailsModal />
-      <div className="orders__filter">
-        <SelectPopup
-          label="Status"
-          items={["All", ...statusesList]}
-          activeItem={filterStatusName}
-          onSelectItem={onSelectStatus}
-        />
-      </div>
+      {/*<div className="orders__filter">*/}
+      {/*  <SelectPopup*/}
+      {/*    label="Status"*/}
+      {/*    items={["All", ...statusesList]}*/}
+      {/*    activeItem={filterStatusName}*/}
+      {/*    onSelectItem={onSelectStatus}*/}
+      {/*  />*/}
+      {/*</div>*/}
       <div className="orders__content overflow-x-auto">
         <div className="overflow-x-auto">
           <table className="table orders-table">
@@ -62,13 +60,13 @@ const OrdersTable = ({ orders, totalCount, editing }) => {
               </tr>
             </thead>
             <tbody>
-              {filteredOrders.map((order) =>
-                order.pizzas ? (
+              {orders.map((order) =>
+                order.pizzaOrders ? (
                   <Order
                     key={order.id}
                     id={order.id}
                     user={order.user}
-                    count={order.pizzas.length}
+                    count={order.pizzaOrders.length}
                     status={order.status}
                     date={order.createdAt}
                     price={order.totalOrderPrice}

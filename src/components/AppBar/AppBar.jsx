@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useRole } from "../../hooks";
 import { logout } from "../../redux/actions/user";
 import { MODALS, ROLES } from "../../utils/constants";
@@ -14,6 +14,9 @@ import { PHONE_NUMBER } from "../../config";
 import { toggleModalVisibility } from "../../redux/actions/modals";
 
 const AppBar = () => {
+  const location = useLocation();
+  const isHomeRoute = location.pathname === "/";
+
   const [navBarOpened, setNavBarOpened] = useState(false);
 
   const dispatch = useDispatch();
@@ -67,24 +70,38 @@ const AppBar = () => {
         })}
       >
         <div className={styles.appBar__items__left}>
-          <div className={styles.appBar__item}>
-            <ScrollLink to="menu" smooth={true}>
-              <Button
-                className={classNames(styles.appBar__btn, "button--light")}
-              >
-                Menu
-              </Button>
-            </ScrollLink>
-          </div>
-          <div className={styles.appBar__item}>
-            <ScrollLink to="reservation" smooth={true}>
-              <Button
-                className={classNames(styles.appBar__btn, "button--light")}
-              >
-                Reservation
-              </Button>
-            </ScrollLink>
-          </div>
+          {isHomeRoute ? (
+            <>
+              <div className={styles.appBar__item}>
+                <ScrollLink to="menu" smooth={true}>
+                  <Button
+                    className={classNames(styles.appBar__btn, "button--light")}
+                  >
+                    Menu
+                  </Button>
+                </ScrollLink>
+              </div>
+              <div className={styles.appBar__item}>
+                <ScrollLink to="reservation" smooth={true}>
+                  <Button
+                    className={classNames(styles.appBar__btn, "button--light")}
+                  >
+                    Reservation
+                  </Button>
+                </ScrollLink>
+              </div>
+            </>
+          ) : (
+            <div className={styles.appBar__item}>
+              <Link to="/">
+                <Button
+                  className={classNames(styles.appBar__btn, "button--light")}
+                >
+                  Home
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
         <div className={styles.appBar__items__right}>
           <div

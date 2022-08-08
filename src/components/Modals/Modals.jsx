@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { MODALS } from "../../utils/constants";
 import ProductModal from "./ProductModal/ProductModal";
 import СheckoutResultModal from "./СheckoutResultModal";
-import CheckoutModal from "./СheckoutModal";
+import FeedbackModal from "./FeedbackModal/FeedbackModal";
 import CartModal from "./CartModal/CartModal";
 
 const Modals = () => {
@@ -12,7 +12,7 @@ const Modals = () => {
   return (
     <>
       {modals[MODALS.ProductModal].visibility ? <ProductModal /> : ""}
-      {modals[MODALS.СheckoutModal].visibility ? <CheckoutModal /> : ""}
+      {modals[MODALS.FeedbackModal].visibility ? <FeedbackModal /> : ""}
       {modals[MODALS.СheckoutResultModal].visibility ? (
         <СheckoutResultModal />
       ) : (

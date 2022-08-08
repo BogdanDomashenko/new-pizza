@@ -18,7 +18,7 @@ const Profile = () => {
   return (
     <div className="container profile">
       <h2>
-        Phone number:
+        Phone number:{" "}
         {parsePhoneNumber("+" + user.phoneNumber).formatInternational()}
       </h2>
       <div className="profile__orders">

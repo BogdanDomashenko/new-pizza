@@ -2,7 +2,7 @@ import { MODALS } from "../../utils/constants";
 
 const initialState = {
   [MODALS.СheckoutResultModal]: { visibility: false },
-  [MODALS.СheckoutModal]: { visibility: false },
+  [MODALS.FeedbackModal]: { visibility: false },
   [MODALS.ProductModal]: { visibility: false },
   [MODALS.CartModal]: { visibility: false },
 };

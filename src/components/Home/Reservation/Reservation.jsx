@@ -1,8 +1,17 @@
 import styles from "./Reservation.module.scss";
 import { Button, Container } from "../../ui";
 import classNames from "classnames";
+import { useDispatch } from "react-redux";
+import { toggleModalVisibility } from "../../../redux/actions/modals";
+import { MODALS } from "../../../utils/constants";
 
 const Reservation = () => {
+  const dispatch = useDispatch();
+
+  const handleBookClick = () => {
+    dispatch(toggleModalVisibility(MODALS.FeedbackModal));
+  };
+
   return (
     <div className={styles.reservation} id="reservation">
       <Container variant="small">
@@ -37,7 +46,9 @@ const Reservation = () => {
               Book your table for lunch or dinner
             </div>
             <div>
-              <Button className={styles.bookButton}>Book Now</Button>
+              <Button className={styles.bookButton} onClick={handleBookClick}>
+                Book Now
+              </Button>
             </div>
           </div>
         </div>

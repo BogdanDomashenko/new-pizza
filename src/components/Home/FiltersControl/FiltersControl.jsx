@@ -17,7 +17,7 @@ const FiltersControl = () => {
 
   return (
     <Container>
-      <div className={styles.filters}>
+      <div className={styles.filters} id="menu">
         <Categories />
         <SelectPopup
           label="Sort by"

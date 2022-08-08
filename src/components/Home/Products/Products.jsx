@@ -22,9 +22,7 @@ const Products = () => {
   return (
     <div className={styles.products}>
       <Container>
-        <h2 className={styles.title} id="menu">
-          Menu
-        </h2>
+        <h2 className={styles.title}>Menu</h2>
         <div className={styles.items}>
           {isLoaded && pizzas.length
             ? pizzas.map((item, index) => <PizzaBlock key={index} {...item} />)

@@ -1,4 +1,4 @@
-import React from "react";
+import { Link as ScrollLink } from "react-scroll";
 import styles from "./Banner1.module.scss";
 import { Button, IconBlock } from "../../../../ui";
 
@@ -21,7 +21,9 @@ const Banner1 = () => {
           lovers"
         </p>
         <div>
-          <Button className={styles.button}>Order Now</Button>
+          <ScrollLink to="menu" smooth={true}>
+            <Button className={styles.button}>Order Now</Button>
+          </ScrollLink>
         </div>
 
         <div className={styles.icons}>
