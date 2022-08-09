@@ -29,7 +29,7 @@ const CartItem = ({ item, count, selectedProps, totalPrice, countSize }) => {
           <span className={classNames(styles.title)}>{item.name}</span>
           <div className={styles.selectedProps}>
             <span className="">{selectedProps.size} inch</span>
-            <span className="">{selectedProps.size}</span>
+            <span className="">{selectedProps.type}</span>
           </div>
         </div>
         <div className={styles.rightBlock}>

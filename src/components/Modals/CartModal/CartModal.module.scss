@@ -31,6 +31,11 @@
   }
 }
 
+.totalPriceBlock {
+  @include screens-s {
+    margin-left: auto;
+  }
+}
 
 .totalPrice {
   font-size: 24px;
