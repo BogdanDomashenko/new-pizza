@@ -53,10 +53,6 @@
         color: black;
         line-height: 32px;
         margin-top: 40px;
-
-        @include screens-m {
-          font-size: 22px;
-        }
       }
 
       @include screens-m {
