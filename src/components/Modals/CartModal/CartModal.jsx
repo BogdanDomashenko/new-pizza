@@ -36,7 +36,7 @@ const CartModal = () => {
         ))}
       </ModalBody>
       <ModalBottom className={styles.bottom}>
-        <div>
+        <div className={styles.totalPriceBlock}>
           <span className={styles.text}>Total Price: </span>
           <span className={styles.totalPrice}>{totalPrice}$</span>
         </div>
