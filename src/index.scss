@@ -425,6 +425,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  justify-content: space-between;
   width: 100%;
   border-top: 1px solid #f6f6f6;
   padding-top: 30px;
@@ -520,6 +521,10 @@ body {
   -ms-flex-pack: center;
   justify-content: center;
   width: 33%;
+
+  @include screens-xs {
+    width: auto;
+  }
 }
 
 .cart__item-price b,
@@ -1158,7 +1163,7 @@ body {
 
   .cart__item-info,
   .order-item-info {
-    width: 30%;
+    width: 40%;
   }
 
   .header {
