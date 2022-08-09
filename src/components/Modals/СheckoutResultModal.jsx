@@ -12,7 +12,7 @@ const СheckoutResultModal = ({ visible, setVisible }) => {
     <Modal
       className="checkout-modal"
       name={MODALS.СheckoutResultModal}
-      title="Checkout"
+      title="Done"
       onClose={onClose}
       visible={visible}
     >
