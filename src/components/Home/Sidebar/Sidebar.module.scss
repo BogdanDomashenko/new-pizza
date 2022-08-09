@@ -5,6 +5,10 @@
   background-color: $color-muted-light;
   padding: 40px 0;
 
+  @include screens-xs {
+    padding: 20px 0;
+  }
+
   .content {
     display: flex;
     align-items: center;
@@ -17,6 +21,9 @@
         width: auto;
         order: 1;
 
+      }
+      @include screens-xs {
+        width: 75%;
       }
     }
 
@@ -49,6 +56,9 @@
 
       @include screens-l {
         order: 2;
+      }
+      @include screens-xs {
+        width: 25%;
       }
     }
 

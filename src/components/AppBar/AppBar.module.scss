@@ -23,6 +23,7 @@
     margin-right: 10px;
 
     &__icon {
+      color: black;
       font-size: 40px;
     }
 
@@ -47,6 +48,7 @@
     }
   }
 
+
   &__items {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -58,14 +60,13 @@
     -ms-flex-pack: justify;
     justify-content: space-between;
     width: 100%;
+    text-align: center;
 
 
     &__left {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      @include screens-m {
-        flex-direction: column;
-      }
     }
 
     &__right {
@@ -73,6 +74,8 @@
       align-items: center;
       @include screens-m {
         flex-direction: column;
+        align-items: unset;
+        width: 100%;
       }
     }
 
@@ -103,6 +106,10 @@
   &__item {
     &:not(:last-child) {
       margin-right: 10px;
+
+      @include screens-m {
+        margin-right: 0;
+      }
     }
 
   }

@@ -32,6 +32,10 @@
 .cartUnderBlock {
   margin-left: 160px;
   text-align: right;
+
+  @include screens-s {
+    margin-left: 100px;
+  }
 }
 
 .textBlock {

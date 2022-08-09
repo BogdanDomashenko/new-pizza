@@ -1,4 +1,5 @@
 @import "../../../styles/variables";
+@import "../../../styles/mixins";
 
 .feedback {
   background: $color-success;
@@ -19,11 +20,24 @@
 
     span {
       font-size: 25px;
+
+      @include screens-s {
+        font-size: 18px;
+      }
+    }
+
+    @include screens-s {
+      height: 35px;
+      width: 35px;
     }
   }
 
   span {
     color: $color-dark;
     font-size: 20px;
+
+    @include screens-s {
+      font-size: 16px;
+    }
   }
 }
