@@ -13,6 +13,10 @@
   background-color: $color-primary;
   border: 2px solid !important;
 
+  &:hover, &:active {
+    background-color: $color-primary-dark !important;
+  }
+
   & svg {
     margin-right: 8px;
     margin-bottom: 1px;
@@ -43,9 +47,6 @@
 
   @include screens-m {
     margin: 20px 0;
-    &:hover, &:active {
-      background: rgba($color-light, .2) !important;
-    }
   }
   @include screens-l {
     justify-content: center;
