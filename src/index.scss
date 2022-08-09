@@ -312,6 +312,10 @@ body {
   border-radius: 10px;
   max-width: 1400px;
   min-height: calc(100vh - 100px);
+
+  @include screens-xs {
+    min-height: 100vh;
+  }
 }
 
 .cart-wrapper {
@@ -689,6 +693,7 @@ body {
 .login-form {
   display: flex;
   justify-content: center;
+  margin-top: 50px;
 }
 
 .login-form__content {
@@ -1063,6 +1068,12 @@ body {
 
 .profile {
   padding: 30px 0;
+
+  @include screens-s {
+    .phone {
+      font-size: 22px !important;
+    }
+  }
 }
 
 .profile__orders .orders__list {

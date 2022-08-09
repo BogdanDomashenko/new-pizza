@@ -3,6 +3,11 @@
   width: 100%;
 }
 
+.body {
+  min-height: 80px;
+  height: 100%;
+}
+
 .bottom {
   display: flex;
   justify-content: end;

@@ -53,6 +53,12 @@ const AppBar = () => {
     }
   };
 
+  const toggleIfNavbarOppened = () => {
+    if(navBarOpened) {
+      toggleNavbar();
+    }
+  }
+
   return (
     <div className={styles.appBar}>
       <div className={styles.appBar__first}>
@@ -76,6 +82,7 @@ const AppBar = () => {
                 <ScrollLink to="menu" smooth={true}>
                   <Button
                     className={classNames(styles.appBar__btn, "button--light")}
+                    onClick={toggleIfNavbarOppened}
                   >
                     Menu
                   </Button>
@@ -84,6 +91,7 @@ const AppBar = () => {
               <div className={styles.appBar__item}>
                 <ScrollLink to="reservation" smooth={true}>
                   <Button
+                  onClick={toggleIfNavbarOppened}
                     className={classNames(styles.appBar__btn, "button--light")}
                   >
                     Reservation
@@ -95,6 +103,7 @@ const AppBar = () => {
             <div className={styles.appBar__item}>
               <Link to="/">
                 <Button
+                onClick={toggleIfNavbarOppened}
                   className={classNames(styles.appBar__btn, "button--light")}
                 >
                   Home
