@@ -65,8 +65,11 @@
 
     &__left {
       display: flex;
-      flex-direction: column;
       align-items: center;
+
+      @include screens-m {
+        flex-direction: column;
+      }
     }
 
     &__right {
@@ -115,7 +118,7 @@
   }
 
   &__cartItem {
-    @include screens-s {
+    @include screens-m {
       display: none;
     }
   }
@@ -145,6 +148,9 @@
     display: none;
 
     &__phoneNumber {
+      @include screens-m {
+        margin-right: 10px;
+      }
       @include screens-s {
         display: none;
       }
