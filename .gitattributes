@@ -1,1 +1,2 @@
 /src/config.js merge=foo
+/src/config.js rebase=foo
