@@ -23,7 +23,7 @@ export const deletePizzaQuery = async (id) => {
 
 export const fetchAviablePizzas = async (page, size, category) => {
   const response = await api.get(
-    `stock/aviablePizzas?page=${page}&&size=${size}&&category=${category}`
+    `stock/available?page=${page}&&size=${size}&&category=${category}`
   );
   return response.data;
 };

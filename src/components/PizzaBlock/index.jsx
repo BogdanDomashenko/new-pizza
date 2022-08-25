@@ -15,10 +15,10 @@ import { Selector } from "../index";
 
 const PizzaBlock = ({
   id,
-  imageUrl,
+  ProductImages,
   name,
-  types,
-  sizes,
+  Types,
+  Sizes,
   price,
   category,
   rating,
@@ -30,7 +30,7 @@ const PizzaBlock = ({
   const onAddToCart = () => {
     dispatch(
       addCartItem({
-        item: { id, imageUrl, name, types, sizes, price },
+        item: { id, ProductImages, name, Types, Sizes, price },
         selectedProps: { type, size, additionalPrice },
       })
     );
@@ -55,12 +55,12 @@ const PizzaBlock = ({
 
   return (
     <div className={styles.pizzaBlock} ref={productRef}>
-      <img className={styles.image} src={imageUrl} alt="Pizza" />
+      <img className={styles.image} src={ProductImages[0].url} alt="Pizza" />
       <h4 className={styles.title}>{name}</h4>
       <Selector
         id={id}
-        types={types}
-        sizes={sizes}
+        types={Types}
+        sizes={Sizes}
         activeType={type}
         activeSize={size}
         className="selector"
@@ -92,19 +92,19 @@ const PizzaBlock = ({
   );
 };
 
-PizzaBlock.propTypes = {
+/* PizzaBlock.propTypes = {
   name: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  types: PropTypes.arrayOf(PropTypes.string).isRequired,
-  sizes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  ProductImages: PropTypes.string.isRequired,
+  Types: PropTypes.arrayOf(PropTypes.object).isRequired,
+  Sizes: PropTypes.arrayOf(PropTypes.object).isRequired,
   price: PropTypes.number.isRequired,
   category: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
 };
 
 PizzaBlock.defaultProps = {
-  types: [],
-  sizes: [],
-};
+  Types: [],
+  Sizes: [],
+}; */
 
 export default PizzaBlock;

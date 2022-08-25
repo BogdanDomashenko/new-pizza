@@ -18,8 +18,8 @@ const pizzas = (state = initialState, action) => {
       const fields = {};
 
       action.payload.list.forEach((item) => {
-        const sizeName = item.sizes[0];
-        const typeName = item.types[0];
+        const sizeName = item.Sizes[0].name;
+        const typeName = item.Types[0].name;
 
         fields[item.id] = {
           size: sizeName,
