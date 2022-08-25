@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { usePagination, usePizzas } from "../../../hooks";
 import Pagination from "../../Pagination/Pagination";
 import { Container } from "../../ui";
+import { useEffect } from "react";
 
 const Products = () => {
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
@@ -15,9 +16,9 @@ const Products = () => {
 
   const pizzas = usePizzas(pagination.page, pagination.rowsPerPage);
 
-  // useEffect(() => {
-  //   setCategoryNames(categories.map((category) => category.name));
-  // }, [categories]);
+  useEffect(() => {
+    console.log(pizzas);
+  }, [pizzas]);
 
   return (
     <div className={styles.products}>
