@@ -25,8 +25,8 @@ const Payment = () => {
     useCart();
 
   const handleSubmit = (values) => {
-    //dispatch(setUserShippingData(values));
-    //dispatch(checkoutCart(values));
+    dispatch(setUserShippingData(values));
+    dispatch(checkoutCart(values));
   };
 
   const form = usePaymentForm(handleSubmit);

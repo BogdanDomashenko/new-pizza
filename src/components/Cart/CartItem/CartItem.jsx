@@ -32,11 +32,11 @@ const CartItem = ({ item, count, selectedProps, totalPrice, countSize }) => {
         <div className={styles.info}>
           <span className={classNames(styles.title)}>{item.name}</span>
           <div className={styles.selectedProps}>
-            {selectedProps.size !== "none" && (
-              <span className="">{selectedProps.size} inch</span>
+            {selectedProps.size.name !== "none" && (
+              <span className="">{selectedProps.size.name} inch</span>
             )}
-            {selectedProps.type !== "none" && (
-              <span className="">{selectedProps.type}</span>
+            {selectedProps.type.name !== "none" && (
+              <span className="">{selectedProps.type.name}</span>
             )}
           </div>
         </div>

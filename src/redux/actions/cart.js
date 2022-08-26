@@ -59,14 +59,15 @@ export const setCheckouting = (value) => ({
 });
 
 export const checkoutCart = (shippingData) => async (dispatch, getState) => {
-  dispatch(setCheckouting(true));
+  //dispatch(setCheckouting(true));
 
   const state = getState();
   const items = Object.values(state.cart.items);
   const orderList = items.map(({ item, selectedProps, count }) => ({
-    pizzaID: item.id,
+    id: item.id,
     count,
-    props: `${selectedProps.type} ${selectedProps.size} inch`,
+    TypeId: selectedProps.type.id,
+    SizeId: selectedProps.size.id,
   }));
 
   try {
