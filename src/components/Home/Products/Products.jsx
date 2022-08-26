@@ -16,10 +16,6 @@ const Products = () => {
 
   const pizzas = usePizzas(pagination.page, pagination.rowsPerPage);
 
-  useEffect(() => {
-    console.log(pizzas);
-  }, [pizzas]);
-
   return (
     <div className={styles.products}>
       <Container>

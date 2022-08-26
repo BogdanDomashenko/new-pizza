@@ -44,6 +44,7 @@ const PizzaBlock = ({
 
     if (!containsBottomClass && !containsSelectorClass) {
       dispatch(setProductModalId(id));
+      //console.log({ id, type });
       dispatch(toggleModalVisibility(MODALS.ProductModal));
     }
   }, []);
