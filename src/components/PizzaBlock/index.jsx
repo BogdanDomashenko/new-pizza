@@ -27,7 +27,8 @@ const PizzaBlock = ({
 
   const { type, size, additionalPrice, cartCount } = useProduct(id);
 
-  const isProductHasProperties = type !== "none";
+  const isProductHasTypes = Types[0].name !== "none";
+  const isProductHasSizes = Sizes[0].name !== "none";
 
   const onAddToCart = () => {
     dispatch(
@@ -59,16 +60,14 @@ const PizzaBlock = ({
     <div className={styles.pizzaBlock} ref={productRef}>
       <img className={styles.image} src={ProductImages[0].url} alt="Pizza" />
       <h4 className={styles.title}>{name}</h4>
-      {isProductHasProperties && (
-        <Selector
-          id={id}
-          types={Types}
-          sizes={Sizes}
-          activeType={type}
-          activeSize={size}
-          className="selector"
-        />
-      )}
+      <Selector
+        id={id}
+        types={isProductHasTypes ? Types : false}
+        sizes={isProductHasSizes ? Sizes : false}
+        activeType={type}
+        activeSize={size}
+        className="selector"
+      />
       <div className={styles.bottom}>
         <div className={styles.price}>from {price + additionalPrice}$</div>
         <Button

@@ -25,7 +25,6 @@ const Payment = () => {
     useCart();
 
   const handleSubmit = (values) => {
-    console.log(values);
     //dispatch(setUserShippingData(values));
     //dispatch(checkoutCart(values));
   };

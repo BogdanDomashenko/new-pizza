@@ -8,21 +8,23 @@ const Selector = ({ id, types, sizes, activeType, activeSize, className }) => {
   const dispatch = useDispatch();
 
   const onSelectSize = (size) => {
-    dispatch(setSelectedField(id, { type: activeType, size: size.name }));
+    dispatch(setSelectedField(id, { type: activeType, size }));
   };
 
   const onSelectType = (type) => {
-    dispatch(setSelectedField(id, { type: type.name, size: activeSize }));
+    dispatch(setSelectedField(id, { type, size: activeSize }));
   };
 
-  return (
+  return !types && !sizes ? (
+    ""
+  ) : (
     <div className={classNames(styles.selector, className)}>
       <ul className={styles.ul}>
         {types?.map((item) => (
           <li
             key={item.id}
             className={classNames({
-              [styles.active]: item.name === activeType,
+              [styles.active]: item.id === activeType.id,
             })}
             onClick={() => onSelectType(item)}
           >
@@ -34,7 +36,7 @@ const Selector = ({ id, types, sizes, activeType, activeSize, className }) => {
         {sizes?.map((item) => (
           <li
             key={item.id}
-            className={item.name === activeSize ? styles.active : ""}
+            className={item.id === activeSize.id ? styles.active : ""}
             onClick={() => onSelectSize(item)}
           >
             {item.name} inch

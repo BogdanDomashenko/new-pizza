@@ -32,8 +32,12 @@ const CartItem = ({ item, count, selectedProps, totalPrice, countSize }) => {
         <div className={styles.info}>
           <span className={classNames(styles.title)}>{item.name}</span>
           <div className={styles.selectedProps}>
-            <span className="">{selectedProps.size} inch</span>
-            <span className="">{selectedProps.type}</span>
+            {selectedProps.size !== "none" && (
+              <span className="">{selectedProps.size} inch</span>
+            )}
+            {selectedProps.type !== "none" && (
+              <span className="">{selectedProps.type}</span>
+            )}
           </div>
         </div>
         <div className={styles.rightBlock}>
