@@ -27,6 +27,8 @@ const PizzaBlock = ({
 
   const { type, size, additionalPrice, cartCount } = useProduct(id);
 
+  const isProductHasProperties = type !== "none";
+
   const onAddToCart = () => {
     dispatch(
       addCartItem({
@@ -44,7 +46,6 @@ const PizzaBlock = ({
 
     if (!containsBottomClass && !containsSelectorClass) {
       dispatch(setProductModalId(id));
-      //console.log({ id, type });
       dispatch(toggleModalVisibility(MODALS.ProductModal));
     }
   }, []);
@@ -58,14 +59,16 @@ const PizzaBlock = ({
     <div className={styles.pizzaBlock} ref={productRef}>
       <img className={styles.image} src={ProductImages[0].url} alt="Pizza" />
       <h4 className={styles.title}>{name}</h4>
-      <Selector
-        id={id}
-        types={Types}
-        sizes={Sizes}
-        activeType={type}
-        activeSize={size}
-        className="selector"
-      />
+      {isProductHasProperties && (
+        <Selector
+          id={id}
+          types={Types}
+          sizes={Sizes}
+          activeType={type}
+          activeSize={size}
+          className="selector"
+        />
+      )}
       <div className={styles.bottom}>
         <div className={styles.price}>from {price + additionalPrice}$</div>
         <Button
