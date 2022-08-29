@@ -42,19 +42,19 @@ export const setPizzaNotAvailableQuery = async (id) => {
   return response.data;
 };
 
-export const setPizzaTypeAvailableQuery = async (id, typeID, available) => {
+export const setPizzaTypeAvailableQuery = async (id, TypeId, available) => {
   const response = await protectedApi.post("stock/setPizzaTypeAvailable", {
     id,
-    typeID,
+    TypeId,
     available,
   });
   return response.data;
 };
 
-export const setPizzaSizeAvailableQuery = async (id, sizeID, available) => {
+export const setPizzaSizeAvailableQuery = async (id, SizeId, available) => {
   const response = await protectedApi.post("stock/setPizzaSizeAvailable", {
     id,
-    sizeID,
+    SizeId,
     available,
   });
   return response.data;

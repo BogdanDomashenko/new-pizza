@@ -246,9 +246,9 @@ export const setPizzaNotAvailable = (id) => async (dispatch) => {
 };
 
 export const setPizzaSizeAvailable =
-  (id, name, sizeID, available) => async (dispatch) => {
+  (id, name, sizeId, available) => async (dispatch) => {
     try {
-      await setPizzaSizeAvailableQuery(id, sizeID, !available);
+      await setPizzaSizeAvailableQuery(id, sizeId, !available);
       if (available) {
         dispatch(removeAdminStockPizzaSize(id, name));
       } else {
@@ -262,9 +262,9 @@ export const setPizzaSizeAvailable =
   };
 
 export const setPizzaTypeAvailable =
-  (id, name, typeID, available) => async (dispatch) => {
+  (id, name, typeId, available) => async (dispatch) => {
     try {
-      await setPizzaTypeAvailableQuery(id, typeID, !available);
+      await setPizzaTypeAvailableQuery(id, typeId, !available);
       if (available) {
         dispatch(removeAdminStockPizzaType(id, name));
       } else {

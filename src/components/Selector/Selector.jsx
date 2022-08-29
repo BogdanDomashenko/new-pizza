@@ -20,28 +20,30 @@ const Selector = ({ id, types, sizes, activeType, activeSize, className }) => {
   ) : (
     <div className={classNames(styles.selector, className)}>
       <ul className={styles.ul}>
-        {types?.map((item) => (
-          <li
-            key={item.id}
-            className={classNames({
-              [styles.active]: item.id === activeType.id,
-            })}
-            onClick={() => onSelectType(item)}
-          >
-            {item.name}
-          </li>
-        ))}
+        {types?.length &&
+          types.map((item) => (
+            <li
+              key={item.id}
+              className={classNames({
+                [styles.active]: item.id === activeType.id,
+              })}
+              onClick={() => onSelectType(item)}
+            >
+              {item.name}
+            </li>
+          ))}
       </ul>
       <ul className={styles.ul}>
-        {sizes?.map((item) => (
-          <li
-            key={item.id}
-            className={item.id === activeSize.id ? styles.active : ""}
-            onClick={() => onSelectSize(item)}
-          >
-            {item.name} inch
-          </li>
-        ))}
+        {sizes.length &&
+          sizes.map((item) => (
+            <li
+              key={item.id}
+              className={item.id === activeSize.id ? styles.active : ""}
+              onClick={() => onSelectSize(item)}
+            >
+              {item.name} inch
+            </li>
+          ))}
       </ul>
     </div>
   );

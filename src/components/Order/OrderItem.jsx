@@ -2,6 +2,7 @@ import React from "react";
 import { formatProductProperties } from "../../utils/helpers";
 
 const OrderItem = ({ title, count, price, img, size, type }) => {
+  console.log({ type, size });
   return (
     <div className="order-item">
       <div className="order-item-img">
