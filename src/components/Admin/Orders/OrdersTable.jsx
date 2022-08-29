@@ -61,15 +61,15 @@ const OrdersTable = ({ orders, totalCount, editing }) => {
             </thead>
             <tbody>
               {orders.map((order) =>
-                order.pizzaOrders ? (
+                order.OrderProducts ? (
                   <Order
                     key={order.id}
                     id={order.id}
-                    user={order.user}
-                    count={order.pizzaOrders.length}
+                    user={order.User}
+                    count={order.totalCount}
                     status={order.status}
                     date={order.createdAt}
-                    price={order.totalOrderPrice}
+                    price={order.totalPrice}
                     editing={editing}
                   />
                 ) : (
