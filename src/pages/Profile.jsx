@@ -26,7 +26,7 @@ const Profile = () => {
         <div className="orders__list">
           {list.length ? (
             list.map((item) =>
-              item.pizzaOrders?.length ? (
+              item.OrderProducts?.length ? (
                 <OrderCard className="orders__item" key={item.id} {...item} />
               ) : (
                 ""

@@ -39,14 +39,15 @@ const Order = () => {
                 <h1>Order #{order.id}</h1>
                 <h3>{order.status}</h3>
               </div>
-              {order.Products.map((item, index) => (
+              {order.OrderProducts.map((item, index) => (
                 <OrderItem
                   key={index}
-                  title={item.name}
-                  count={item.OrderProducts.count}
-                  price={item.OrderProducts.totalPrice}
-                  img={item.ProductImages[0].url}
-                  props={"item.props"}
+                  title={item.Product.name}
+                  count={item.count}
+                  price={item.totalPrice}
+                  img={item.Product.ProductImages[0].url}
+                  size={item.Size.name}
+                  type={item.Type.name}
                 />
               ))}
             </div>
