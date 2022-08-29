@@ -16,7 +16,7 @@ const AddProduct = () => {
   const formik = useFormik({
     initialValues: {
       name: "",
-      imageUrl: "",
+      images: "",
       price: "",
       category: "",
       rating: "",
@@ -24,6 +24,7 @@ const AddProduct = () => {
     onSubmit: (values, { resetForm }) => {
       dispatch(addPizza(values));
       resetForm();
+      setActiveCategoryName();
     },
   });
 
@@ -46,10 +47,10 @@ const AddProduct = () => {
         value={formik.values.name}
       />
       <Input
-        label="Image url"
-        name="imageUrl"
+        label="Image1,"
+        name="images"
         onChange={formik.handleChange}
-        value={formik.values.imageUrl}
+        value={formik.values.images}
       />
       <Input
         label="Price"

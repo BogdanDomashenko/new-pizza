@@ -15,13 +15,13 @@ export const updateOrderQuery = async (order) => {
 
 export const fetchAdminPizzas = async (page, size) => {
   const response = await protectedApi.get(
-    `pizza/list?page=${page}&&size=${size}`
+    `product/list?page=${page}&&size=${size}`
   );
   return response.data;
 };
 
 export const updatePizzaQuery = async (pizza) => {
-  const response = await protectedApi.post("pizza/update", { pizza });
+  const response = await protectedApi.post("product/update", { pizza });
   return response.data;
 };
 
@@ -87,32 +87,32 @@ export const setUserRoleQuery = async (id, role) => {
 };
 
 export const changeSizeQuery = async (size) => {
-  const response = await protectedApi.post("pizza/update-size", size);
+  const response = await protectedApi.post("product/update-size", size);
   return response.data;
 };
 
 export const changeTypeQuery = async (type) => {
-  const response = await protectedApi.post("pizza/update-type", type);
+  const response = await protectedApi.post("product/update-type", type);
   return response.data;
 };
 
 export const addSizeQuery = async (size) => {
-  const response = await protectedApi.post("pizza/add-size", size);
+  const response = await protectedApi.post("product/add-size", size);
   return response.data;
 };
 
 export const addTypeQuery = async (type) => {
-  const response = await protectedApi.post("pizza/add-type", type);
+  const response = await protectedApi.post("product/add-type", type);
   return response.data;
 };
 
 export const deleteSizeQuery = async (id) => {
-  const response = await protectedApi.post("pizza/delete-size", { id });
+  const response = await protectedApi.post("product/delete-size", { id });
   return response.data;
 };
 
 export const deleteTypeQuery = async (id) => {
-  const response = await protectedApi.post("pizza/delete-type", { id });
+  const response = await protectedApi.post("product/delete-type", { id });
   return response.data;
 };
 

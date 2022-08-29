@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { deletePizza, updatePizza } from "../../../redux/actions/admin";
 import { Button, Input } from "../../ui";
 
-const ProductItem = ({ id, name, imageUrl, price, category, rating }) => {
+const ProductItem = ({ id, name, ProductImages, price, category, rating }) => {
   const dispatch = useDispatch();
 
   const [isEditing, setIsEditing] = useState(false);
@@ -16,7 +16,7 @@ const ProductItem = ({ id, name, imageUrl, price, category, rating }) => {
   const formik = useFormik({
     initialValues: {
       name: name,
-      imageUrl: imageUrl,
+      images: ProductImages.map(({ url }) => url).join(", "),
       price: price,
       category: category,
       rating: rating,
@@ -37,7 +37,7 @@ const ProductItem = ({ id, name, imageUrl, price, category, rating }) => {
       <td>{id}</td>
       <td>{name}</td>
       <td>
-        <img alt={name} className="product__img" src={imageUrl} />
+        <img alt={name} className="product__img" src={ProductImages[0].url} />
       </td>
       <td>{price}$</td>
       <td>{category}</td>
@@ -69,10 +69,10 @@ const ProductItem = ({ id, name, imageUrl, price, category, rating }) => {
       </td>
       <td>
         <Input
-          label="Image url"
-          name="imageUrl"
+          label="Image1, image2..."
+          name="images"
           onChange={formik.handleChange}
-          value={formik.values.imageUrl}
+          value={formik.values.images}
         />
       </td>
       <td>
