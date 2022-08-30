@@ -153,8 +153,12 @@ const admin = (state = initialState, action) => {
             action.payload.id === pizza.id
               ? {
                   ...pizza,
-                  sizes: action.payload.sizes.map((size) => size.name),
-                  types: action.payload.types.map((type) => type.name),
+                  Sizes: action.payload.sizes.filter(
+                    (size) => size.name !== "none"
+                  ),
+                  Types: action.payload.types.filter(
+                    (type) => type.name !== "none"
+                  ),
                 }
               : pizza
           ),
@@ -170,8 +174,8 @@ const admin = (state = initialState, action) => {
             action.payload === pizza.id
               ? {
                   ...pizza,
-                  sizes: [],
-                  types: [],
+                  Sizes: [],
+                  Types: [],
                 }
               : pizza
           ),

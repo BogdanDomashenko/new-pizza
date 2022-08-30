@@ -59,13 +59,20 @@ const StockItem = ({
   return (
     <tr className="stock">
       <td>
-        <Checkbox checked={availableInp.checked} onChange={toggleAvailable} />
+        <Checkbox
+          checked={availableInp.checked}
+          onChange={toggleAvailable}
+          disabled={
+            ((isNoneSizeIncluded || isNoneTypeIncluded) &&
+              availableSizes.length === 1) ||
+            availableTypes.length === 1
+          }
+        />
       </td>
       <td>{id}</td>
       <td>{name}</td>
       <td>
         {sizes.map((size) => {
-          //const includes = availableSizes.includes(size.name);
           const includes = !!availableSizes.find(
             (item) => item.name === size.name
           );
@@ -88,7 +95,6 @@ const StockItem = ({
       </td>
       <td>
         {types.map((type) => {
-          //const includes = availableTypes.includes(type.name);
           const includes = !!availableTypes.find(
             (item) => item.name === type.name
           );
