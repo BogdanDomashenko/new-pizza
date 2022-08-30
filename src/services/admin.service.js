@@ -61,7 +61,7 @@ export const setPizzaSizeAvailableQuery = async (id, SizeId, available) => {
 };
 
 export const fetchPizzasSales = async () => {
-  const response = await protectedApi.get("statistics/pizzas-sales");
+  const response = await protectedApi.get("statistics/product-sales");
 
   return response.data;
 };
