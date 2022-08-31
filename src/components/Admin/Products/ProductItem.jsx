@@ -37,7 +37,7 @@ const ProductItem = ({ id, name, ProductImages, price, category, rating }) => {
       <td>{id}</td>
       <td>{name}</td>
       <td>
-        <img alt={name} className="product__img" src={ProductImages[0].url} />
+        <img alt={name} className="product__img" src={ProductImages[0]?.url} />
       </td>
       <td>{price}$</td>
       <td>{category}</td>
