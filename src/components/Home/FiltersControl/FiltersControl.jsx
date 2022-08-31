@@ -8,19 +8,24 @@ import { Button, Container, Input, SelectPopup } from "../../ui";
 import classNames from "classnames";
 import { searchProduct } from "../../../redux/actions/pizzas";
 import { useInput } from "../../../hooks";
+import { useFormik } from "formik";
 
 const FiltersControl = () => {
   const dispatch = useDispatch();
   const { sortBy } = useSelector(({ filters }) => filters);
-  const searchInput = useInput();
+
+  const searchForm = useFormik({
+    initialValues: {
+      field: "",
+    },
+    onSubmit: (values) => {
+      dispatch(searchProduct(values.field));
+    },
+  });
 
   const onSelectSortType = useCallback((type) => {
     dispatch(setSortBy(type));
   }, []);
-
-  const handleSearchClick = () => {
-    dispatch(searchProduct(searchInput.value));
-  };
 
   return (
     <Container>
@@ -36,16 +41,19 @@ const FiltersControl = () => {
             styles.sort
           )}
         /> */}
-        <div className={styles.search}>
+        <form className={styles.search} onSubmit={searchForm.handleSubmit}>
           <Input
             className={styles.searchInput}
             label="Search"
-            {...searchInput}
+            id="field"
+            name="field"
+            onChange={searchForm.handleChange}
+            value={searchForm.values.field}
           />
-          <Button variant="success" onClick={handleSearchClick}>
+          <Button variant="success" type="submit">
             Search
           </Button>
-        </div>
+        </form>
       </div>
     </Container>
   );
