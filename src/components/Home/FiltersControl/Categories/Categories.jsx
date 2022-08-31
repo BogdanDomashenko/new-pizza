@@ -12,10 +12,6 @@ const Categories = () => {
 
   const categories = useCategories();
   const activeCategory = useSelector((state) => state.filters.category);
-  // const categoryNames = useMemo(
-  //   () => categories.map((category) => category.name),
-  //   [categories]
-  // );
   const category = activeCategory;
 
   const onCategoryChange = (id) => {

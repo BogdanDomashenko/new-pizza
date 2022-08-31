@@ -11,7 +11,7 @@ const usePizzas = (page, size) => {
   const [sortedItems, setSortedItems] = useState([]);
 
   useEffect(() => {
-    if (size) {
+    if (size && category !== "none") {
       dispatch(fetchPizzas(page, size, category));
     }
   }, [page, size, category]);

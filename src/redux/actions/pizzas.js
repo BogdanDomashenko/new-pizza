@@ -5,6 +5,7 @@ import {
   fetchPizzaTypes,
   fetchProductSearch,
 } from "../../services/pizza.service";
+import { setCategory } from "./filters";
 
 export const setLoaded = (payload) => ({
   type: "SET_LOADED",
@@ -109,6 +110,7 @@ export const getDeliveryPrice = () => async (dispatch) => {
 
 export const searchProduct = (name) => async (dispatch) => {
   dispatch(setLoaded(false));
+  dispatch(setCategory("none"));
   dispatch(setPizzas({ list: [], totalCount: 0 }));
   const products = await fetchProductSearch(name);
   dispatch(setLoaded(true));
