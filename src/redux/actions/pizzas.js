@@ -77,11 +77,17 @@ const setDelivery = (delivery) => ({
 
 export const fetchPizzas = (page, size, category) => async (dispatch) => {
   dispatch(setLoaded(false));
+  dispatch(setPizzas({ list: [], totalCount: 0 }));
   const pizzas = await fetchAviablePizzas(page, size, category);
   const { list, totalCount, sizes, types } = pizzas;
   dispatch(setPizzaSizes(sizes));
   dispatch(setPizzaTypes(types));
-  dispatch(setPizzas({ list, totalCount }));
+  dispatch(
+    setPizzas({
+      list: list.length ? list : null,
+      totalCount,
+    })
+  );
 };
 
 export const getPizzaSizes = () => async (dispatch) => {
