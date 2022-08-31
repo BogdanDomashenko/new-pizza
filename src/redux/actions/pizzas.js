@@ -3,6 +3,7 @@ import {
   fetchDeliveryPrice,
   fetchPizzaSizes,
   fetchPizzaTypes,
+  fetchProductSearch,
 } from "../../services/pizza.service";
 
 export const setLoaded = (payload) => ({
@@ -98,4 +99,11 @@ export const getPizzaTypes = () => async (dispatch) => {
 export const getDeliveryPrice = () => async (dispatch) => {
   const delivery = await fetchDeliveryPrice();
   dispatch(setDelivery(delivery));
+};
+
+export const searchProduct = (name) => async (dispatch) => {
+  dispatch(setLoaded(false));
+  const products = await fetchProductSearch(name);
+  dispatch(setLoaded(true));
+  dispatch(setPizzas({ list: products, totalCount: products.length }));
 };

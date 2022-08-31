@@ -37,3 +37,8 @@ export const setDeliveryPriceQuery = async (price) => {
   const response = await api.post("order/set-delivery-price", { price });
   return response.data;
 };
+
+export const fetchProductSearch = async (name) => {
+  const response = await api.get(`product/search?name=${name}`);
+  return response.data;
+};
