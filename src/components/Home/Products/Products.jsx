@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { usePagination, usePizzas } from "../../../hooks";
 import Pagination from "../../Pagination/Pagination";
 import { Container } from "../../ui";
-import { useEffect } from "react";
 
 const Products = () => {
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
@@ -21,11 +20,15 @@ const Products = () => {
       <Container>
         <h2 className={styles.title}>Menu</h2>
         <div className={styles.items}>
-          {isLoaded && pizzas.length
-            ? pizzas.map((item, index) => <PizzaBlock key={index} {...item} />)
-            : Array(8)
-                .fill()
-                .map((_, index) => <PizzaLoadingBlock key={index} />)}
+          {pizzas !== null
+            ? isLoaded && pizzas.length
+              ? pizzas.map((item, index) => (
+                  <PizzaBlock key={index} {...item} />
+                ))
+              : Array(8)
+                  .fill()
+                  .map((_, index) => <PizzaLoadingBlock key={index} />)
+            : "Nothing found"}
         </div>
         <div className={styles.pagination}>
           {totalCount ? <Pagination {...pagination} /> : ""}

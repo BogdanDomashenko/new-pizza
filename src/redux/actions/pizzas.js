@@ -103,7 +103,13 @@ export const getDeliveryPrice = () => async (dispatch) => {
 
 export const searchProduct = (name) => async (dispatch) => {
   dispatch(setLoaded(false));
+  dispatch(setPizzas({ list: [], totalCount: 0 }));
   const products = await fetchProductSearch(name);
   dispatch(setLoaded(true));
-  dispatch(setPizzas({ list: products, totalCount: products.length }));
+  dispatch(
+    setPizzas({
+      list: products.length ? products : null,
+      totalCount: products.length,
+    })
+  );
 };

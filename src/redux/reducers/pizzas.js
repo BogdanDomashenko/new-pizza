@@ -17,7 +17,7 @@ const pizzas = (state = initialState, action) => {
     case "SET_PIZZAS":
       const fields = {};
 
-      action.payload.list.forEach((item) => {
+      action.payload.list?.forEach((item) => {
         const size = item.Sizes[0];
         const type = item.Types[0];
 
