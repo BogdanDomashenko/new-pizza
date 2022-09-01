@@ -3,6 +3,7 @@ import { setSelectedField } from "../../redux/actions/pizzas";
 import { useDispatch } from "react-redux";
 
 import styles from "./Selector.module.scss";
+import { useEffect } from "react";
 
 const Selector = ({ id, types, sizes, activeType, activeSize, className }) => {
   const dispatch = useDispatch();
@@ -14,6 +15,11 @@ const Selector = ({ id, types, sizes, activeType, activeSize, className }) => {
   const onSelectType = (type) => {
     dispatch(setSelectedField(id, { type, size: activeSize }));
   };
+
+  /*   useEffect(() => {
+    console.log({ activeSize, activeType });
+    console.log({ sizes, types });
+  }, [activeSize, activeType]); */
 
   return !types && !sizes ? (
     ""

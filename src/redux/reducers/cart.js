@@ -16,9 +16,9 @@ const cart = (state = initialState, action) => {
       const currentId =
         action.payload.item.id +
         "_" +
-        action.payload.selectedProps.type +
+        action.payload.selectedProps.type.id +
         "_" +
-        action.payload.selectedProps.size;
+        action.payload.selectedProps.size.id;
       const currentPizzaItem = !state.items[currentId]
         ? {
             item: action.payload.item,
