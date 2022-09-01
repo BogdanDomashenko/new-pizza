@@ -22,7 +22,14 @@ const ProductItem = ({ id, name, ProductImages, price, category, rating }) => {
       rating: rating,
     },
     onSubmit: (values, { resetForm }) => {
-      dispatch(updatePizza(id, values));
+      dispatch(
+        updatePizza(id, {
+          ...values,
+          ProductImages: values.images.split(", ").map((url) => ({
+            url,
+          })),
+        })
+      );
       toggleIsEditing();
       resetForm();
     },
