@@ -41,7 +41,7 @@ const FiltersControl = () => {
             styles.sort
           )}
         /> */}
-        <form className={styles.search} onSubmit={searchForm.handleSubmit}>
+        {/*         <form className={styles.search} onSubmit={searchForm.handleSubmit}>
           <Input
             className={styles.searchInput}
             label="Search"
@@ -53,7 +53,7 @@ const FiltersControl = () => {
           <Button variant="success" type="submit">
             Search
           </Button>
-        </form>
+        </form> */}
       </div>
     </Container>
   );
