@@ -17,13 +17,13 @@ const pizzas = (state = initialState, action) => {
     case "SET_PIZZAS":
       const fields = {};
 
-      action.payload.list.forEach((item) => {
-        const sizeName = item.sizes[0];
-        const typeName = item.types[0];
+      action.payload.list?.forEach((item) => {
+        const size = item.Sizes[0];
+        const type = item.Types[0];
 
         fields[item.id] = {
-          size: sizeName,
-          type: typeName,
+          size,
+          type,
           additionalPrice: 0,
         };
       });
@@ -47,9 +47,9 @@ const pizzas = (state = initialState, action) => {
     case "SET_SELECTED_FIELD":
       const newSelectedFields = { ...state.selectedFields };
       const additionalPrice =
-        state.types.find((type) => type.name === action.payload.field.type)
+        state.types.find((type) => type.id === action.payload.field.type.id)
           .price +
-        state.sizes.find((size) => size.name === action.payload.field.size)
+        state.sizes.find((size) => size.id === action.payload.field.size.id)
           .price;
 
       newSelectedFields[action.payload.id] = {

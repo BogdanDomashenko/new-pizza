@@ -3,7 +3,9 @@ import {
   fetchDeliveryPrice,
   fetchPizzaSizes,
   fetchPizzaTypes,
+  fetchProductSearch,
 } from "../../services/pizza.service";
+import { setCategory } from "./filters";
 
 export const setLoaded = (payload) => ({
   type: "SET_LOADED",
@@ -76,12 +78,17 @@ const setDelivery = (delivery) => ({
 
 export const fetchPizzas = (page, size, category) => async (dispatch) => {
   dispatch(setLoaded(false));
+  dispatch(setPizzas({ list: [], totalCount: 0 }));
   const pizzas = await fetchAviablePizzas(page, size, category);
-
   const { list, totalCount, sizes, types } = pizzas;
   dispatch(setPizzaSizes(sizes));
   dispatch(setPizzaTypes(types));
-  dispatch(setPizzas({ list, totalCount }));
+  dispatch(
+    setPizzas({
+      list: list.length ? list : null,
+      totalCount,
+    })
+  );
 };
 
 export const getPizzaSizes = () => async (dispatch) => {
@@ -99,4 +106,18 @@ export const getPizzaTypes = () => async (dispatch) => {
 export const getDeliveryPrice = () => async (dispatch) => {
   const delivery = await fetchDeliveryPrice();
   dispatch(setDelivery(delivery));
+};
+
+export const searchProduct = (name) => async (dispatch) => {
+  dispatch(setLoaded(false));
+  dispatch(setCategory("none"));
+  dispatch(setPizzas({ list: [], totalCount: 0 }));
+  const products = await fetchProductSearch(name);
+  dispatch(setLoaded(true));
+  dispatch(
+    setPizzas({
+      list: products.length ? products : null,
+      totalCount: products.length,
+    })
+  );
 };

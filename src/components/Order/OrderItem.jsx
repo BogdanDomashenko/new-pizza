@@ -1,6 +1,7 @@
 import React from "react";
+import { formatProductProperties } from "../../utils/helpers";
 
-const OrderItem = ({ title, count, price, img, props }) => {
+const OrderItem = ({ title, count, price, img, size, type }) => {
   return (
     <div className="order-item">
       <div className="order-item-img">
@@ -8,7 +9,7 @@ const OrderItem = ({ title, count, price, img, props }) => {
       </div>
       <div className="order-item-info">
         <h3>{title}</h3>
-        <p>{props}</p>
+        <p>{formatProductProperties(size, type, "inch")}</p>
       </div>
       <div className="order-item-count">
         <b>{count}</b>

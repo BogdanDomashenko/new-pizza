@@ -2,21 +2,21 @@ import { Tabs } from "../../../ui";
 import { useCategories } from "../../../../hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../../../../redux/actions/filters";
+import { useSearchParams } from "react-router-dom";
 
 import styles from "./Categories.module.scss";
 
 const Categories = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
 
   const categories = useCategories();
   const activeCategory = useSelector((state) => state.filters.category);
-  // const categoryNames = useMemo(
-  //   () => categories.map((category) => category.name),
-  //   [categories]
-  // );
   const category = activeCategory;
 
   const onCategoryChange = (id) => {
+    searchParams.delete("page");
+    setSearchParams(searchParams);
     dispatch(setCategory(id));
   };
 

@@ -9,7 +9,9 @@ const useProduct = (id) => {
   const { items: cartItems } = useSelector((state) => state.cart);
 
   const cartItem =
-    cartItems[cartIdGenerate(id, selectedFields?.type, selectedFields?.size)];
+    cartItems[
+      cartIdGenerate(id, selectedFields?.type.id, selectedFields?.size.id)
+    ];
 
   const cartCount = cartItem ? cartItem.count : 0;
 

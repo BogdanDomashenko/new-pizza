@@ -61,13 +61,13 @@ const ProductModal = () => {
     <Modal name={MODALS.ProductModal} className={styles.modal}>
       <ModalBody className={styles.body}>
         <div className={styles.image}>
-          <img src={product.imageUrl} />
+          <img src={product.ProductImages[0].url} />
         </div>
         <h2>{product.name}</h2>
         <Selector
           id={id}
-          types={product.types}
-          sizes={product.sizes}
+          types={product.Types}
+          sizes={product.Sizes}
           activeType={type}
           activeSize={size}
           className={styles.selector}

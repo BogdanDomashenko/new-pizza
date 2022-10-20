@@ -11,12 +11,12 @@ const usePizzas = (page, size) => {
   const [sortedItems, setSortedItems] = useState([]);
 
   useEffect(() => {
-    if (size) {
+    if (size && category !== "none") {
       dispatch(fetchPizzas(page, size, category));
     }
   }, [page, size, category]);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (list.length) {
       setSortedItems(
         [...list].sort((a, b) => {
@@ -35,9 +35,9 @@ const usePizzas = (page, size) => {
         })
       );
     }
-  }, [sortBy, list]);
+  }, [sortBy, list]); */
 
-  return sortedItems;
+  return list;
 };
 
 export default usePizzas;

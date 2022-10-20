@@ -20,68 +20,65 @@ const DetailsModal = () => {
   return (
     <Modal visible={visibility} onClose={onClose}>
       <ModalBody className={styles.body}>
-        {products?.id ? (
-          <div className={styles.content}>
-            <div className={styles.products}>
-              {products.pizzaOrders.map((item, index) => (
-                <OrderItem
-                  key={index}
-                  title={item.pizza.name}
-                  count={item.count}
-                  price={item.totalPrice}
-                  img={item.pizza.imageUrl}
-                  props={item.props}
-                />
-              ))}
-            </div>
-            {shippingData?.firstName ? (
-              <div className={styles.info}>
-                <div className={styles.infoItem}>
-                  <Title variant="h4">Order id:</Title>
-                  {shippingData.userOrderID}
-                </div>
-                <div className={styles.infoItem}>
-                  <Title variant="h4">First Name:</Title>
-                  {shippingData.firstName}
-                </div>
-                <div className={styles.infoItem}>
-                  <Title variant="h4">Last Name:</Title>
-                  {shippingData.lastName}
-                </div>
-                <div className={styles.infoItem}>
-                  <Title variant="h4">Email:</Title>
-                  {shippingData.email}
-                </div>
-                <div className={styles.infoItem}>
-                  <Title variant="h4">Phone:</Title>
-                  {parsePhoneNumber(
-                    "+" + shippingData.phone
-                  ).formatInternational()}
-                </div>
-                <div className={styles.infoItem}>
-                  <Title variant="h4">City:</Title>
-                  {shippingData.city}
-                </div>
-                <div className={styles.infoItem}>
-                  <Title variant="h4">Address:</Title>
-                  {shippingData.address}
-                </div>
-                <div className={styles.infoItem}>
-                  <Title variant="h4">Post Code:</Title>
-                  {shippingData.postCode}
-                </div>
-                <div className={styles.infoItem}>
-                  <Title variant="h4">Payment Method:</Title>
-                  {shippingData.paymentMethod}
-                </div>
-              </div>
-            ) : (
-              <span>No shipping data</span>
-            )}
+        <div className={styles.content}>
+          <div className={styles.products}>
+            {products.map((item, index) => (
+              <OrderItem
+                key={index}
+                title={item.Product.name}
+                count={item.count}
+                price={item.totalPrice}
+                img={item.Product.ProductImages[0].url}
+                size={item.Size.name}
+                type={item.Type.name}
+              />
+            ))}
           </div>
-        ) : (
-          <Loader />
-        )}
+          {shippingData?.firstName ? (
+            <div className={styles.info}>
+              <div className={styles.infoItem}>
+                <Title variant="h4">Order id:</Title>
+                {shippingData.userOrderID}
+              </div>
+              <div className={styles.infoItem}>
+                <Title variant="h4">First Name:</Title>
+                {shippingData.firstName}
+              </div>
+              <div className={styles.infoItem}>
+                <Title variant="h4">Last Name:</Title>
+                {shippingData.lastName}
+              </div>
+              <div className={styles.infoItem}>
+                <Title variant="h4">Email:</Title>
+                {shippingData.email}
+              </div>
+              <div className={styles.infoItem}>
+                <Title variant="h4">Phone:</Title>
+                {parsePhoneNumber(
+                  "+" + shippingData.phone
+                ).formatInternational()}
+              </div>
+              <div className={styles.infoItem}>
+                <Title variant="h4">City:</Title>
+                {shippingData.city}
+              </div>
+              <div className={styles.infoItem}>
+                <Title variant="h4">Address:</Title>
+                {shippingData.address}
+              </div>
+              <div className={styles.infoItem}>
+                <Title variant="h4">Post Code:</Title>
+                {shippingData.postCode}
+              </div>
+              <div className={styles.infoItem}>
+                <Title variant="h4">Payment Method:</Title>
+                {shippingData.paymentMethod}
+              </div>
+            </div>
+          ) : (
+            <span>No shipping data</span>
+          )}
+        </div>
       </ModalBody>
     </Modal>
   );

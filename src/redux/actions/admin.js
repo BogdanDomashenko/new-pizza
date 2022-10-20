@@ -40,6 +40,7 @@ import {
   fetchOrder,
   fetchOrderShippingData,
 } from "../../services/order.service";
+import Order from "../../components/Admin/Orders/Order";
 
 export const setOrders = (orders) => {
   return {
@@ -245,9 +246,9 @@ export const setPizzaNotAvailable = (id) => async (dispatch) => {
 };
 
 export const setPizzaSizeAvailable =
-  (id, name, sizeID, available) => async (dispatch) => {
+  (id, name, sizeId, available) => async (dispatch) => {
     try {
-      await setPizzaSizeAvailableQuery(id, sizeID, !available);
+      await setPizzaSizeAvailableQuery(id, sizeId, !available);
       if (available) {
         dispatch(removeAdminStockPizzaSize(id, name));
       } else {
@@ -261,9 +262,9 @@ export const setPizzaSizeAvailable =
   };
 
 export const setPizzaTypeAvailable =
-  (id, name, typeID, available) => async (dispatch) => {
+  (id, name, typeId, available) => async (dispatch) => {
     try {
-      await setPizzaTypeAvailableQuery(id, typeID, !available);
+      await setPizzaTypeAvailableQuery(id, typeId, !available);
       if (available) {
         dispatch(removeAdminStockPizzaType(id, name));
       } else {
@@ -389,13 +390,13 @@ export const deleteAdminPizzaType = (id) => async (dispatch) => {
   }
 };
 
-export const showOrderDetails = (id) => async (dispatch) => {
+export const showOrderDetails = (id) => async (dispatch, getState) => {
   dispatch(setDetailsOrderModal(true));
   try {
-    const shippingData = await fetchOrderShippingData(id);
-    const order = await fetchOrder(id);
-
-    dispatch(setDetailsOrderModal(true, order, shippingData));
+    const order = getState().admin.orders.list.find((order) => order.id === id);
+    dispatch(
+      setDetailsOrderModal(true, order.OrderProducts, order.OrderShipping)
+    );
   } catch (error) {
     dispatch(setTimeoutAdminError(error.response.data.message));
   }

@@ -15,20 +15,20 @@ const Products = () => {
 
   const pizzas = usePizzas(pagination.page, pagination.rowsPerPage);
 
-  // useEffect(() => {
-  //   setCategoryNames(categories.map((category) => category.name));
-  // }, [categories]);
-
   return (
     <div className={styles.products}>
       <Container>
         <h2 className={styles.title}>Menu</h2>
         <div className={styles.items}>
-          {isLoaded && pizzas.length
-            ? pizzas.map((item, index) => <PizzaBlock key={index} {...item} />)
-            : Array(8)
-                .fill()
-                .map((_, index) => <PizzaLoadingBlock key={index} />)}
+          {pizzas !== null
+            ? isLoaded && pizzas.length
+              ? pizzas.map((item, index) => (
+                  <PizzaBlock key={index} {...item} />
+                ))
+              : Array(8)
+                  .fill()
+                  .map((_, index) => <PizzaLoadingBlock key={index} />)
+            : "Nothing found"}
         </div>
         <div className={styles.pagination}>
           {totalCount ? <Pagination {...pagination} /> : ""}

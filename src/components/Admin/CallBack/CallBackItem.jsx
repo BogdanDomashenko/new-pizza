@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { deleteCallBack } from "../../../redux/actions/admin";
 import parsePhoneNumber from "libphonenumber-js";
 
-const CallBackItem = ({ id, user, createdAt }) => {
+const CallBackItem = ({ id, User, createdAt }) => {
   const dispatch = useDispatch();
   const locale = useLocale();
 
@@ -23,7 +23,7 @@ const CallBackItem = ({ id, user, createdAt }) => {
   return (
     <tr>
       <td>{id}</td>
-      <td>{parsePhoneNumber("+" + user.phoneNumber).formatInternational()}</td>
+      <td>{parsePhoneNumber("+" + User.phoneNumber).formatInternational()}</td>
       <td>{parsedDate.toLocaleString(locale)}</td>
       <td>
         <Checkbox value={doneChecked} onChange={handleDoneChange} />

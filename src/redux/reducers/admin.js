@@ -85,8 +85,8 @@ const admin = (state = initialState, action) => {
             action.payload.id === pizza.id
               ? {
                   ...pizza,
-                  sizes: pizza.sizes.filter(
-                    (size) => size !== action.payload.size
+                  Sizes: pizza.Sizes.filter(
+                    (size) => size.name !== action.payload.size
                   ),
                 }
               : pizza
@@ -103,8 +103,8 @@ const admin = (state = initialState, action) => {
             action.payload.id === pizza.id
               ? {
                   ...pizza,
-                  types: pizza.types.filter(
-                    (type) => type !== action.payload.type
+                  Types: pizza.Types.filter(
+                    (type) => type.name !== action.payload.type
                   ),
                 }
               : pizza
@@ -121,7 +121,7 @@ const admin = (state = initialState, action) => {
             action.payload.id === pizza.id
               ? {
                   ...pizza,
-                  sizes: [...pizza.sizes, action.payload.size],
+                  Sizes: [...pizza.Sizes, { name: action.payload.size }],
                 }
               : pizza
           ),
@@ -137,7 +137,7 @@ const admin = (state = initialState, action) => {
             action.payload.id === pizza.id
               ? {
                   ...pizza,
-                  types: [...pizza.types, action.payload.type],
+                  Types: [...pizza.Types, { name: action.payload.type }],
                 }
               : pizza
           ),
@@ -153,8 +153,12 @@ const admin = (state = initialState, action) => {
             action.payload.id === pizza.id
               ? {
                   ...pizza,
-                  sizes: action.payload.sizes.map((size) => size.name),
-                  types: action.payload.types.map((type) => type.name),
+                  Sizes: action.payload.sizes.filter(
+                    (size) => size.name !== "none"
+                  ),
+                  Types: action.payload.types.filter(
+                    (type) => type.name !== "none"
+                  ),
                 }
               : pizza
           ),
@@ -170,8 +174,8 @@ const admin = (state = initialState, action) => {
             action.payload === pizza.id
               ? {
                   ...pizza,
-                  sizes: [],
-                  types: [],
+                  Sizes: [],
+                  Types: [],
                 }
               : pizza
           ),
