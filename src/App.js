@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import {
   CallBack,
@@ -29,6 +29,8 @@ import "./index.scss";
 
 function App() {
   const isAuth = useRole() !== ROLES.phantom;
+
+  useEffect(() => {}, []);
 
   return (
     <div className="wrapper">
