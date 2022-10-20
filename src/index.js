@@ -4,6 +4,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import store, { persistor } from "./redux/store";
 import { Provider } from "react-redux";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import "swiper/css/bundle";
 import "./styles/icon-font.css";
 import { PersistGate } from "./ssr/PersistGate";
@@ -18,3 +19,5 @@ root.render(
     </PersistGate>
   </Provider>
 );
+
+serviceWorkerRegistration.register();
