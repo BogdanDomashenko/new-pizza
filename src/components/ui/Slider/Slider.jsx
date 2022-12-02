@@ -2,9 +2,9 @@ import React from "react";
 import { Swiper } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+//import "swiper/css";
+//import "swiper/css/pagination";
+//import "swiper/css/navigation";
 
 import "./Slider.scss";
 import PropTypes from "prop-types";

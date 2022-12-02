@@ -17,6 +17,7 @@ const IconBlock = ({
   text,
   iconSize,
   className,
+  ...rest
 }) => {
   return (
     <div
@@ -24,6 +25,7 @@ const IconBlock = ({
         [styles.iconBlock_textRigth]: textPosition === TEXT_POSITION.right,
         [styles.iconBlock_textDown]: textPosition === TEXT_POSITION.down,
       })}
+      {...rest}
     >
       <Icon
         name={iconName}
