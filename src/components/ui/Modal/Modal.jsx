@@ -5,7 +5,15 @@ import { toggleModalVisibility } from "../../../redux/actions/modals";
 
 import styles from "./Modal.module.scss";
 
-const Modal = ({ name, visible, onClose, title, children, className }) => {
+const Modal = ({
+  name,
+  visible,
+  onClose,
+  title,
+  children,
+  className,
+  ...rest
+}) => {
   const ref = useRef();
   const visibility = useSelector((state) =>
     name ? state.modals[name].visibility : visible
@@ -46,6 +54,7 @@ const Modal = ({ name, visible, onClose, title, children, className }) => {
       className={classNames(styles.modal, {
         [styles.hidden]: !visibility,
       })}
+      {...rest}
     >
       <div className={classNames(styles.content, className)} ref={ref}>
         <div className={styles.head}>

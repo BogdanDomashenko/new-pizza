@@ -2,18 +2,18 @@ import classNames from "classnames";
 
 import styles from "./Input.module.scss";
 
-function Input(props) {
+function Input({ className, error, icon, label, ...rest }) {
   return (
     <div
-      className={classNames(styles.input, props.className, {
-        "input--with-icon": props.icon,
-        [styles.input_error]: props.error,
+      className={classNames(styles.input, className, {
+        "input--with-icon": icon,
+        [styles.input_error]: error,
       })}
     >
-      <div className={styles.icon}>{props.icon}</div>
-      <input {...props} placeholder="   "></input>
-      {props.label ? <div className={styles.label}>{props.label}</div> : ""}
-      {props.error ? <span className={styles.error}>{props.error}</span> : ""}
+      <div className={styles.icon}>{icon}</div>
+      <input {...rest} placeholder="   "></input>
+      {label ? <div className={styles.label}>{label}</div> : ""}
+      {error ? <span className={styles.error}>{error}</span> : ""}
     </div>
   );
 }
