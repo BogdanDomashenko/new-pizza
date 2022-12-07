@@ -10,7 +10,13 @@ import "./Slider.scss";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const Slider = ({ className, children, variant, slidesPerView = 1 }) => {
+const Slider = ({
+  className,
+  children,
+  variant,
+  slidesPerView = 1,
+  ...rest
+}) => {
   return (
     <Swiper
       slidesPerView={slidesPerView}
@@ -22,6 +28,7 @@ const Slider = ({ className, children, variant, slidesPerView = 1 }) => {
       navigation={true}
       modules={[Pagination, Navigation]}
       className={classNames(className, { ["slider--" + variant]: variant })}
+      {...rest}
     >
       {children}
     </Swiper>

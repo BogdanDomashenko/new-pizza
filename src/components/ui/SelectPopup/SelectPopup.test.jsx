@@ -1,15 +1,7 @@
-import {
-  fireEvent,
-  render,
-  renderHook,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import * as ReactDOM from "react-dom";
 import SelectPopup from "./SelectPopup";
 import { useState } from "react";
-import { act } from "react-dom/test-utils";
 
 const items = ["popular", "price", "alphabet"];
 
