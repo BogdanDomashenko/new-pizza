@@ -3,9 +3,9 @@ import styles from "./Tabs.module.scss";
 import { Button } from "../index";
 import classNames from "classnames";
 
-const Tabs = ({ items, value, onChange, className, tabClassName }) => {
+const Tabs = ({ items, value, onChange, className, tabClassName, ...rest }) => {
   return (
-    <div className={classNames(className, styles.tabs)}>
+    <div className={classNames(className, styles.tabs)} {...rest}>
       {items.map((item, index) => (
         <div className={classNames(tabClassName, styles.tab)} key={item.id}>
           <Button
