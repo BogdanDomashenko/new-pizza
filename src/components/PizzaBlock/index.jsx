@@ -26,6 +26,7 @@ const PizzaBlock = ({
   const dispatch = useDispatch();
 
   const { type, size, additionalPrice, cartCount } = useProduct(id);
+  console.log(id, JSON.stringify({ type, size, additionalPrice, cartCount }));
 
   const isProductHasTypes = Types[0].name !== "none";
   const isProductHasSizes = Sizes[0].name !== "none";

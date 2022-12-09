@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 import styles from "./Input.module.scss";
 
-function Input({ className, error, icon, label, ...rest }) {
+function Input({ className, error, icon, label, inputRef, ...rest }) {
   return (
     <div
       className={classNames(styles.input, className, {
@@ -11,7 +11,7 @@ function Input({ className, error, icon, label, ...rest }) {
       })}
     >
       <div className={styles.icon}>{icon}</div>
-      <input {...rest} placeholder="   "></input>
+      <input {...rest} placeholder="   " ref={inputRef}></input>
       {label ? <div className={styles.label}>{label}</div> : ""}
       {error ? <span className={styles.error}>{error}</span> : ""}
     </div>
