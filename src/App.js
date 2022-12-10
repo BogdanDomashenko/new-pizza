@@ -26,11 +26,14 @@ import {
 } from "./pages";
 import { ROLES } from "./utils/constants";
 import "./index.scss";
+import uniqu from "./uniqu";
 
 function App() {
   const isAuth = useRole() !== ROLES.phantom;
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    uniqu();
+  }, []);
 
   return (
     <div className="wrapper">
