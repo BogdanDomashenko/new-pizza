@@ -59,7 +59,7 @@ const PizzaBlock = ({
 
   return (
     <div className={styles.pizzaBlock} ref={productRef}>
-      <img className={styles.image} src={ProductImages[0].url} alt="Pizza" />
+      <img className={styles.image} src={ProductImages[0].url} alt={name} />
       <h4 className={styles.title}>{name}</h4>
       <Selector
         id={id}

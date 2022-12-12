@@ -3,7 +3,6 @@ import { setSelectedField } from "../../redux/actions/pizzas";
 import { useDispatch } from "react-redux";
 
 import styles from "./Selector.module.scss";
-import { useEffect } from "react";
 
 const Selector = ({ id, types, sizes, activeType, activeSize, className }) => {
   const dispatch = useDispatch();
