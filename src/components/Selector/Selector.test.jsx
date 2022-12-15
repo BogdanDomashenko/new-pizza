@@ -1,8 +1,9 @@
 import "@testing-library/jest-dom/extend-expect";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Selector from "./Selector";
 import * as reduxHooks from "react-redux";
 import styles from "./Selector.module.scss";
+import * as actions from "../../redux/actions/pizzas";
 
 const props = {
   "id": 1,
@@ -23,6 +24,13 @@ jest.mock("react-redux", () => {
   return {
     __esModule: true,
     ...jest.requireActual("react-redux"),
+  };
+});
+
+jest.mock("../../redux/actions/pizzas", () => {
+  return {
+    __esModule: true,
+    ...jest.requireActual("../../redux/actions/pizzas"),
   };
 });
 
@@ -72,5 +80,35 @@ describe("Render Selector", () => {
     });
 
     expect(activeType).toHaveClass(styles.active);
+  });
+
+  it("should dispatch setSelectedSize on select size", () => {
+    const dispatch = jest.fn();
+
+    useDispatchSpy.mockReturnValue(dispatch);
+
+    const setSelectedFieldSpy = jest.spyOn(actions, "setSelectedField");
+
+    render(<Selector {...props} />);
+
+    fireEvent.click(screen.getByText(props.sizes[2].name, { exact: false }));
+
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(setSelectedFieldSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it("should dispatch setSelectedSize on select type", () => {
+    const dispatch = jest.fn();
+
+    useDispatchSpy.mockReturnValue(dispatch);
+
+    const setSelectedFieldSpy = jest.spyOn(actions, "setSelectedField");
+
+    render(<Selector {...props} />);
+
+    fireEvent.click(screen.getByText(props.types[1].name, { exact: false }));
+
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(setSelectedFieldSpy).toHaveBeenCalledTimes(1);
   });
 });

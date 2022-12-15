@@ -13,6 +13,7 @@ const Button = ({
   variant,
   size,
   disabled,
+  ...rest
 }) => {
   return (
     <button
@@ -25,6 +26,7 @@ const Button = ({
         disabled: disabled,
       })}
       onClick={onClick}
+      {...rest}
     >
       {children}
     </button>
